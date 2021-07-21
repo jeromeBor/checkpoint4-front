@@ -1,0 +1,13 @@
+.navbar-nav {
+  color: white !important;
+}
+
+.footer {
+  padding: 16px;
+}
+
+@media (max-width: 400px) {
+  .footer {
+    padding: 6px !important;
+  }
+}

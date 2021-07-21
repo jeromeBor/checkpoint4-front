@@ -1,0 +1,10 @@
+.footer {
+  background-color: var(--primary);
+  color: white;
+}
+.footer-list li {
+  list-style: none;
+}
+.footer-list li:not(:first-child) {
+  margin-left: 8px;
+}

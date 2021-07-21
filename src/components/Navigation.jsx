@@ -6,9 +6,14 @@ import '../styles/navigation.css';
 
 const Navigation = () => {
   return (
-    <Navbar bg='primary' expand='lg'>
+    <Navbar bg='primary' variant='dark' expand='sm'>
       <Container>
-        <Navbar.Brand>La galerie de Jérome</Navbar.Brand>
+        <Navbar.Brand
+          variant='secondary'
+          className='text-uppercase text-secondary fw-bold'
+        >
+          Jerome's Gallery
+        </Navbar.Brand>
         <Navbar.Toggle aria-controls='basic-navbar-nav' />
         <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
