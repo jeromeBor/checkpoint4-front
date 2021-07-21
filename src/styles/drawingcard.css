@@ -1,0 +1,20 @@
+.drawing-card {
+  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
+}
+
+.cardimage-container {
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.cardimage-container img {
+  height: 100%;
+  width: auto;
+}
+
+.badge {
+  font-weight: 500 !important;
+}

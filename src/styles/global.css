@@ -16,12 +16,36 @@ h2 {
     'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
-a,
-a:focus,
-a:active {
+.footer a,
+.footer a:focus {
   text-decoration: none !important;
   color: inherit !important;
 }
-a:hover {
+.footer a:hover {
   color: var(--secondary) !important;
+}
+
+.page-title {
+  position: relative;
+  color: var(--primary) !important;
+}
+
+.page-title::before {
+  content: '';
+  position: absolute;
+  left: 0px;
+  top: 50%;
+  width: 35%;
+  height: 5px;
+  background-color: var(--secondary);
+}
+
+.page-title::after {
+  content: '';
+  position: absolute;
+  right: 0px;
+  top: 50%;
+  width: 35%;
+  height: 5px;
+  background-color: var(--secondary);
 }

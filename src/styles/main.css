@@ -1,0 +1,12 @@
+.main {
+  background-color: rgba(211, 243, 238, 0.5);
+  background-size: 28px 28px;
+  background-image: repeating-linear-gradient(
+    45deg,
+    rgba(127, 183, 190, 0.3) 0,
+    rgba(127, 183, 190, 0.3) 0,
+    1.6px,
+    rgba(211, 243, 238, 0.3) 0,
+    rgba(211, 243, 238, 0.3) 50%
+  );
+}

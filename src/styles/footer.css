@@ -1,6 +1,7 @@
 .footer {
   background-color: var(--primary);
   color: white;
+  padding: 16px;
 }
 .footer-list li {
   list-style: none;

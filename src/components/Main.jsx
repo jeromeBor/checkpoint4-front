@@ -1,6 +1,6 @@
 import React from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
-
+import { Switch, Route } from 'react-router-dom';
+import '../styles/main.css';
 import Home from './Home';
 import DrawingsList from './DrawingsList';
 import Footer from './Footer';
@@ -9,7 +9,7 @@ import Profile from './Profile';
 
 const Main = () => {
   return (
-    <article>
+    <article className='main'>
       <Navigation />
       <Switch>
         <Route exact path='/' component={Home} />

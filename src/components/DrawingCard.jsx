@@ -1,17 +1,24 @@
 import React from 'react';
 import '../styles/drawingcard.css';
-import { Card } from 'react-bootstrap';
+import { Card, Badge } from 'react-bootstrap';
 
-const DrawingCard = ({ drawings }) => {
+const DrawingCard = ({ drawing, tags }) => {
   return (
-    <div>
-      <Card className='drawing-card'>
-        <Card.Img variant='top' src='holder.js/100px180' />
-        <Card.Body>
-          <Card.Title>Card Title</Card.Title>
-        </Card.Body>
-      </Card>
-    </div>
+    <Card className='drawing-card m-2'>
+      <div className='cardimage-container'>
+        <Card.Img variant='top' src={drawing.imageLink} />
+      </div>
+      <Card.Body variant='primary'>
+        <Card.Title>
+          {drawing.title}{' '}
+          <Badge bg='secondary' className='badge'>
+            {' '}
+            {tags &&
+              tags.filter((tag) => tag.idCategory === tag.idCategory)[0].title}
+          </Badge>
+        </Card.Title>
+      </Card.Body>
+    </Card>
   );
 };
 
