@@ -5,9 +5,3 @@
 .navbar-nav .active {
   background-color: var(--secondary) !important;
 }
-
-@media (max-width: 400px) {
-  .footer {
-    padding: 6px !important;
-  }
-}

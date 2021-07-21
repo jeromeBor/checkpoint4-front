@@ -6,11 +6,19 @@
 .drawingcard-wrapper {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-  grid-gap: 20px;
+  grid-gap: 10px;
   grid-auto-flow: dense;
   justify-content: space-around;
   text-align: center;
-  width: 80%;
   width: 100%;
   margin: auto;
+}
+
+@media (max-width: 750px) {
+  .drawingcard-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+  }
 }
