@@ -2,6 +2,7 @@
   background-color: var(--primary);
   color: white;
   padding: 16px;
+  margin-top: auto;
 }
 .footer-list li {
   list-style: none;

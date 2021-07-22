@@ -49,3 +49,7 @@ h2 {
   height: 5px;
   background-color: var(--secondary);
 }
+
+.pagecontainer {
+  flex: 1 0 auto;
+}

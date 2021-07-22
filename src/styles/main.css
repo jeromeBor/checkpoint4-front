@@ -9,4 +9,7 @@
     rgba(211, 243, 238, 0.3) 0,
     rgba(211, 243, 238, 0.3) 50%
   );
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
 }

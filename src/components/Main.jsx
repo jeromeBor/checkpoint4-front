@@ -5,7 +5,7 @@ import Home from './Home';
 import DrawingsList from './DrawingsList';
 import Footer from './Footer';
 import Navigation from './Navigation';
-import Profile from './Profile';
+import FormDrawing from './FormDrawing';
 
 const Main = () => {
   return (
@@ -14,7 +14,7 @@ const Main = () => {
       <Switch>
         <Route exact path='/' component={Home} />
         <Route exact path='/gallery' component={DrawingsList} />
-        <Route exact path='/profile' component={Profile} />
+        <Route exact path='/form' component={FormDrawing} />
       </Switch>
       <Footer />
     </article>

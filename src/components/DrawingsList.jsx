@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
 
 import fetchDrawings from '../utils/fetchDrawings';
 import fetchTags from '../utils/fetchTags';
@@ -18,35 +17,18 @@ const DrawingsList = () => {
 
   useEffect(() => {
     async function fetchApiTags() {
-      await fetchTags(setTags);
+      const data = await fetchTags();
+      setTags(data);
     }
     fetchApiTags();
   }, []);
 
-  // useEffect(() => {
-  //   setIsLoading(true);
-  //   function fetchApiDrawings() {
-  //     axios
-  //       .get('http://localhost:4000/drawings')
-  //       .then((r) => r.data)
-  //       .then((r) => setDrawings(r))
-  //       .then((r) => setFileteredDrawings(r))
-  //       .finally(
-  //         setTimeout(() => {
-  //           setFileteredDrawings(false);
-  //         }, 2000)
-  //       );
-  //   }
-  //   fetchApiDrawings();
-  // }, []);
-
   useEffect(() => {
     setIsLoading(true);
     async function fetchApiDrawings() {
-      const data = await fetchDrawings(setDrawings);
+      const data = await fetchDrawings();
+      setDrawings(data);
       setFileteredDrawings(data);
-      console.log(drawings);
-      console.log(filteredDrawings);
       setTimeout(() => {
         setIsLoading(false);
       }, 1000);
@@ -64,7 +46,7 @@ const DrawingsList = () => {
   };
 
   return (
-    <Container fluid className='drawingcard container my-5'>
+    <Container fluid className='pagecontainer  my-5'>
       <h1 className='page-title fw-bold text-center'>La gallerie</h1>
       <div className='filter-card'>
         <FilterButtons tags={tags} filter={filter} showAll={showAll} />

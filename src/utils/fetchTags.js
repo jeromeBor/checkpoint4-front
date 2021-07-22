@@ -1,10 +1,7 @@
 import axios from 'axios';
 
-const fetchTags = (setTags) => {
-  axios
-    .get('http://localhost:4000/tags')
-    .then((r) => r.data)
-    .then((r) => setTags(r));
+const fetchTags = () => {
+  return axios.get('http://localhost:4000/tags').then((r) => r.data);
 };
 
 export default fetchTags;

@@ -23,8 +23,8 @@ const Navigation = () => {
             <LinkContainer exact to='/gallery'>
               <Nav.Link>Gallery</Nav.Link>
             </LinkContainer>
-            <LinkContainer exact to='/profile'>
-              <Nav.Link>Profile</Nav.Link>
+            <LinkContainer exact to='/form'>
+              <Nav.Link>Form</Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
