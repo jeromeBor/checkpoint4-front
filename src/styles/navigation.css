@@ -5,3 +5,9 @@
 .navbar-nav .active {
   background-color: var(--secondary) !important;
 }
+
+@media (max-width: 575px) {
+  .navbar-nav {
+    text-align: center;
+  }
+}

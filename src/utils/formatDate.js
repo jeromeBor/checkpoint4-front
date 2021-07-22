@@ -30,7 +30,7 @@ const formatDate = (timestamp) => {
     minute = `0${minute}`;
   }
 
-  return `le ${day} ${months[month]} ${year} - ${hour}:${minute}`;
+  return `${day} ${months[month]} ${year} `;
 };
 const showOnlyHour = (timestamp) => {
   const ts = new Date(timestamp);
@@ -60,7 +60,7 @@ const formatDateUnix = (timestamp) => {
   }
 
   // Will display time in 10:30:23 format
-  const formattedTime = `${hours}:${minutes.substr(-2)} le ${day}/${month}`;
+  const formattedTime = `le ${day}/${month} à ${hours}h `;
 
   return formattedTime;
 };

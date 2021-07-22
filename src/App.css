@@ -1,6 +1,6 @@
 .App {
   text-align: center;
-  flex: 1 0 auto;
+  height: 100% !important;
 }
 
 .App-logo {

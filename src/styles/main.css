@@ -9,7 +9,7 @@
     rgba(211, 243, 238, 0.3) 0,
     rgba(211, 243, 238, 0.3) 50%
   );
+  /* display: grid; */
+  /* grid-template-rows: auto 1fr auto; */
   min-height: 100vh;
-  display: flex;
-  flex-direction: column;
 }

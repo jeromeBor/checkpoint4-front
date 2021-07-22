@@ -1,12 +1,111 @@
 .homepage {
   width: 100%;
-  height: 80vh;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
+.homepage-drawing {
+  width: 100%;
+}
+/* 
 .image {
   background-image: url('https://i.ibb.co/54xdDkS/220090664-1506215486392657-8462818756967565321-n.jpg');
   background-repeat: no-repeat;
   background-size: cover;
   width: 80%;
   height: 100%;
+} */
+
+.lastest-drawing {
+  width: 80%;
+}
+.welcome {
+  z-index: 99;
+  position: relative;
+  height: 70vh;
+  width: 100%;
+}
+
+.welcome h1 {
+  padding: 50px;
+  position: relative;
+  z-index: 2;
+}
+
+.welcome::before {
+  position: absolute;
+  display: block;
+  content: '';
+  background-image: url('https://i.ibb.co/54xdDkS/220090664-1506215486392657-8462818756967565321-n.jpg');
+  background-repeat: no-repeat;
+  background-size: cover;
+  opacity: 0.6;
+  width: 100%;
+  height: 100%;
+  left: 0;
+  top: 0;
+}
+
+.lastdrawing {
+  width: 100%;
+  max-width: 1000px;
+  display: flex;
+  justify-content: center;
+  align-items: start;
+  flex-direction: row;
+}
+
+.lastdrawing img {
+  max-height: 400px;
+}
+
+.welcome h1 {
+  font-size: 4rem;
+  width: 80%;
+}
+
+.typewriter h1 {
+  max-width: max-content !important;
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: 0.1em solid #7fb7be; /* The typwriter cursor */
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  animation: 3.5s typing 1s steps(25, end) both, blink-caret 1s step-end 6 both;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from,
+  to {
+    border-color: transparent;
+  }
+  50% {
+    border-color: #7fb7be;
+  }
+}
+
+@media (max-width: 850px) {
+  .homepage {
+    min-height: 100vh;
+  }
+
+  .lastdrawing {
+    flex-direction: column !important;
+  }
+
+  .welcome h1 {
+    font-size: 2rem;
+  }
 }

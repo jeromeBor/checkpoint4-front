@@ -53,7 +53,7 @@ const DrawingsList = () => {
       </div>
       <div className='drawingcard-wrapper'>
         {!isLoading ? (
-          <DrawingCard filteredDrawings={filteredDrawings} />
+          <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
         ) : null}
       </div>
       {isLoading ? (
