@@ -122,22 +122,25 @@ function FormDrawing() {
         )}
 
         <div class='d-grid gap-2'>
-          <Button
-            type='submit'
-            variant='primary'
-            className=' btn-default btn-block'
-          >
-            Send drawing
-          </Button>
-          <Button
-            disabled
-            type='submit'
-            variant='primary'
-            className='btn-default btn-block d-flex justify-content-center align-items-center '
-          >
-            <Spinner animation='border' size='sm' />
-            <span className='ms-2'> Drawing sending...</span>
-          </Button>
+          {!drawingIsCreating ? (
+            <Button
+              type='submit'
+              variant='primary'
+              className='fw-bold btn-default btn-block'
+            >
+              Send drawing
+            </Button>
+          ) : (
+            <Button
+              disabled
+              type='submit'
+              variant='primary'
+              className='text-white btn-default btn-block d-flex justify-content-center align-items-center '
+            >
+              <Spinner animation='border' size='sm' />
+              <span className='ms-2'> Drawing sending...</span>
+            </Button>
+          )}
         </div>
       </Form>
     </div>

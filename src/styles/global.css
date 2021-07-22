@@ -53,3 +53,7 @@ h2 {
 .pagecontainer {
   flex: 1 0 auto;
 }
+
+.btn-primary {
+  color: white !important;
+}

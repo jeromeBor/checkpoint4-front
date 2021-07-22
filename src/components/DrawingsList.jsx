@@ -48,18 +48,20 @@ const DrawingsList = () => {
   return (
     <Container fluid className='pagecontainer  my-5'>
       <h1 className='page-title fw-bold text-center'>La gallerie</h1>
-      <div className='filter-card'>
+      <div className='filter-button  d-flex justify-content-center '>
         <FilterButtons tags={tags} filter={filter} showAll={showAll} />
       </div>
       <div className='drawingcard-wrapper'>
-        {isLoading ? (
-          <span>
-            <Spinner animation='border' role='status' /> Loading...
-          </span>
-        ) : (
+        {!isLoading ? (
           <DrawingCard filteredDrawings={filteredDrawings} />
-        )}
+        ) : null}
       </div>
+      {isLoading ? (
+        <span className='loader mx-auto'>
+          <Spinner animation='border' role='status' /> Drawings loading, please
+          wait...
+        </span>
+      ) : null}
     </Container>
   );
 };
