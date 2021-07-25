@@ -20,7 +20,7 @@ const Navigation = () => {
             <LinkContainer exact to='/'>
               <Nav.Link>Home</Nav.Link>
             </LinkContainer>
-            <LinkContainer exact to='/gallery'>
+            <LinkContainer exact to='/drawings'>
               <Nav.Link>Gallery</Nav.Link>
             </LinkContainer>
             <LinkContainer exact to='/form'>

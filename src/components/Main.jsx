@@ -14,7 +14,7 @@ const Main = () => {
       <Navigation />
       <Switch>
         <Route exact path='/' component={Home} />
-        <Route exact path='/gallery' component={DrawingsList} />
+        <Route exact path='/drawings' component={DrawingsList} />
         <Route exact path='/form' component={FormDrawing} />
         <Route exact path='/drawing/:id' component={DrawingPage} />
       </Switch>

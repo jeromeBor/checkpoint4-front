@@ -1,0 +1,21 @@
+.drawingpage-container {
+  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
+  background-color: white;
+  min-height: 80vh;
+}
+
+.drawingpage-container h1 {
+  background-color: var(--primary);
+}
+
+.drawingpage-imgcontainer img {
+  height: 100%;
+}
+
+.drawingpage-imgcontainer {
+  height: 70vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

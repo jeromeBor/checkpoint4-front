@@ -1,5 +1,6 @@
 import React from 'react';
 import '../styles/drawingcard.css';
+import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
 import { formatDate } from '../utils/formatDate';
 
@@ -8,8 +9,8 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
     <>
       {filteredDrawings &&
         filteredDrawings.map((drawing) => (
-          <Link>
-            <Card className='drawing-card m-2'>
+          <Link to={`/drawing/${drawing.id}`}>
+            <Card key={drawing.id} className='drawing-card m-2'>
               <div className='cardimage-overlay-text fw-bold text-secondary'>
                 <span className='cardtitle fs-2'> {drawing.title}</span>
                 <span className='cardtag fs-5 fw-light text-light'>
@@ -25,16 +26,6 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
               <div className='cardimage-container'>
                 <Card.Img variant='top' src={drawing.imageLink} />
               </div>
-              {/* <Card.Body variant='light' className='card-label'>
-              <Card.Title>
-                {drawing.title}{' '}
-                <Badge bg='primary' className='badge'>
-                  {tags &&
-                    tags.filter((tag) => tag.idCategory === tag.idCategory)[0]
-                      .title}
-                </Badge>
-              </Card.Title>
-            </Card.Body> */}
             </Card>
           </Link>
         ))}
