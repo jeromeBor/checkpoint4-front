@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/home.css';
 import { formatDateUnix } from '../utils/formatDate';
-
 import fetchDrawings from '../utils/fetchDrawings';
 
 const Home = () => {

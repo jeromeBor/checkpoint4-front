@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react';
 
 import fetchDrawings from '../utils/fetchDrawings';
 import fetchTags from '../utils/fetchTags';
-import { Container, Spinner } from 'react-bootstrap';
-
+import { Container } from 'react-bootstrap';
+import Loader from '../components/Loader';
 import '../styles/drawinglist.css';
 import DrawingCard from './DrawingCard';
 import FilterButtons from './FilterButtons';
@@ -31,7 +31,7 @@ const DrawingsList = () => {
       setFileteredDrawings(data);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 3000);
     }
     fetchApiDrawings();
   }, []);
@@ -56,12 +56,7 @@ const DrawingsList = () => {
           <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
         ) : null}
       </div>
-      {isLoading ? (
-        <span className='loader mx-auto'>
-          <Spinner animation='border' role='status' /> Drawings loading, please
-          wait...
-        </span>
-      ) : null}
+      {isLoading ? <Loader /> : null}
     </Container>
   );
 };
