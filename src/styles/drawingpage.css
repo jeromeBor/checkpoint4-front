@@ -1,7 +1,8 @@
 .drawingpage-container {
   box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
   background-color: white;
-  min-height: 80vh;
+  max-width: 1000px;
+  position: relative;
 }
 
 .drawingpage-container h1 {
@@ -9,13 +10,16 @@
 }
 
 .drawingpage-imgcontainer img {
-  height: 100%;
+  width: 100%;
 }
 
 .drawingpage-imgcontainer {
-  height: 70vh;
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: center;
+  align-items: start;
+}
+
+.drawingpage-textcontainer {
+  min-width: 250px;
 }

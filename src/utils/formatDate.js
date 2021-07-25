@@ -60,7 +60,7 @@ const formatDateUnix = (timestamp) => {
   }
 
   // Will display time in 10:30:23 format
-  const formattedTime = `le ${day}/${month} à ${hours}h `;
+  const formattedTime = `${day}/${month} à ${hours}h `;
 
   return formattedTime;
 };

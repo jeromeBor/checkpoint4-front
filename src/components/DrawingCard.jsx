@@ -2,7 +2,7 @@ import React from 'react';
 import '../styles/drawingcard.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import { formatDate } from '../utils/formatDate';
+import { formatDateUnix } from '../utils/formatDate';
 
 const DrawingCard = ({ filteredDrawings, tags }) => {
   return (
@@ -18,9 +18,9 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
                     tags.filter((tag) => tag.idCategory === tag.idCategory)[0]
                       .title}
                 </span>
-                <span className='carddate fs-6 fw-light text-info'>
-                  {drawing.dateOfWrite && formatDate(drawing.dateOfWrite)}
-                </span>
+                {/* <span className='carddate fs-6 fw-light text-info'>
+                  {drawing.dateOfWrite && formatDateUnix(drawing.dateOfWrite)}
+                </span> */}
               </div>
               <div className='cardimage-overlay d-flex align-items-center justify-content-center'></div>
               <div className='cardimage-container'>

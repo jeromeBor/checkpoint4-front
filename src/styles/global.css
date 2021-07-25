@@ -58,3 +58,23 @@ h2 {
 .btn-primary {
   color: white !important;
 }
+
+a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+a:link,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+
+.backto-sticky {
+  font-size: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem;
+  background-color: var(--primary);
+  color: var(--secondary);
+}

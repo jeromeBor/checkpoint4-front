@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import '../styles/drawingpage.css';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
-import { Row, Col } from 'react-bootstrap';
+import { formatDateUnix } from '../utils/formatDate';
+
+import { Row, Col, Button } from 'react-bootstrap';
 
 const DrawingPage = () => {
   const { id } = useParams();
@@ -18,25 +20,26 @@ const DrawingPage = () => {
   }, [id]);
 
   return (
-    <article className='drawingpage-container m-5 p-3'>
+    <article className='drawingpage-container my-4 mx-auto p-3 '>
       <Row>
-        <Col className='drawingpage-imgcontainer col-md-auto '>
+        <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6 '>
           <img
             src={drawingData && drawingData[0].imageLink}
             alt={drawingData && drawingData[0].title}
           />
         </Col>
         <Col className='drawingpage-textcontainer'>
-          <h1 className='p-1 ps-3 text-white '>
-            {' '}
-            {drawingData && drawingData[0].title}
-          </h1>
-          <Row>
-            <Col>
-              <p>{drawingData && drawingData[0].postContent}</p>
-            </Col>
-          </Row>
-          <p>{drawingData && drawingData[0].dateOfWrite}</p>
+          <Col>
+            <h1 className='p-1 ps-3 text-white '>
+              {drawingData && drawingData[0].title}
+            </h1>
+          </Col>
+          <Col className='fw-light pt-3'>
+            <p>{drawingData && drawingData[0].postContent}</p>
+            <Link to='/drawings' className='backto d-inline'>
+              <Button> Back to Gallery</Button>{' '}
+            </Link>
+          </Col>
         </Col>
       </Row>
     </article>
