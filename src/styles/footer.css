@@ -1,14 +1,20 @@
 .footer {
   background-color: var(--primary);
   color: white;
-  padding: 16px;
   margin-top: auto;
+  height: 100px;
+  font-size: 0.8rem;
+  box-sizing: border-box !important;
 }
 .footer-list li {
   list-style: none;
 }
 .footer-list li:not(:first-child) {
   margin-left: 8px;
+}
+
+.columns {
+  height: 100%;
 }
 
 @media (max-width: 500px) {

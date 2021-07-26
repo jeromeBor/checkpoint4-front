@@ -20,7 +20,7 @@ const DrawingPage = () => {
   }, [id]);
 
   return (
-    <article className='drawingpage-container my-4 mx-auto p-3 '>
+    <article className='drawingpage-container p-3 '>
       <Row>
         <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6 '>
           <img

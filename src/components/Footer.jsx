@@ -6,8 +6,8 @@ import '../styles/footer.css';
 const Footer = () => {
   return (
     <Container className='footer' fluid>
-      <Row className='d-flex align-items-start justify-content-sm-evenly'>
-        <Col sm={true}>
+      <Row className='columns d-flex align-items-start justify-content-sm-evenly'>
+        <Col sm={true} className='pt-2'>
           <ul className='footer-list text-center p-0'>
             <li className='fw-bold text-uppercase text-secondary'>
               Ressources
@@ -32,7 +32,7 @@ const Footer = () => {
             </li>
           </ul>
         </Col>
-        <Col sm={true}>
+        <Col sm={true} className='pt-2'>
           <ul className='footer-list text-center p-0'>
             <li className='fw-bold text-uppercase text-secondary '>
               Liens rapide
@@ -66,8 +66,8 @@ const Footer = () => {
             </li>
           </ul>
         </Col>
-        <Col sm={true}>
-          <ul className='footer-list text-center p-0'>
+        <Col sm={true} className='pt-2'>
+          <ul className='footer-list text-center p-0 my-0'>
             <li className='fw-bold text-uppercase text-secondary'>
               Wild Code School{' '}
             </li>
