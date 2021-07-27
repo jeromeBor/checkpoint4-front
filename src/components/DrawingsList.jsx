@@ -31,7 +31,7 @@ const DrawingsList = () => {
       setFileteredDrawings(data);
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
+      }, 1200);
     }
     fetchApiDrawings();
   }, []);

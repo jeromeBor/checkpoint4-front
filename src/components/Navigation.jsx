@@ -33,13 +33,19 @@ const Navigation = () => {
         <Navbar.Collapse id='basic-navbar-nav' className='mt-2'>
           <Nav className='ms-auto'>
             <LinkContainer exact to='/' onClick={closeMenu}>
-              <Nav.Link active={false}>Home</Nav.Link>
+              <Nav.Link className='mx-2' active={false}>
+                Home
+              </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/drawings' onClick={closeMenu}>
-              <Nav.Link active={false}>Gallery</Nav.Link>
+              <Nav.Link className='mx-2' active={false}>
+                Gallery
+              </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/form' onClick={closeMenu}>
-              <Nav.Link active={false}>Form</Nav.Link>
+              <Nav.Link className='mx-2' active={false}>
+                Form
+              </Nav.Link>
             </LinkContainer>
           </Nav>
         </Navbar.Collapse>
