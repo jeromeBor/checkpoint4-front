@@ -12,8 +12,8 @@ body {
 }
 h1,
 h2 {
-  font-family: 'Lato', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: 'Dancing Script', 'Lato', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
 }
 
 .footer a,
@@ -77,4 +77,26 @@ a:active {
   padding: 0.5rem;
   background-color: var(--primary);
   color: var(--secondary);
+}
+
+@media (max-width: 600px) {
+  .page-title::before {
+    content: '';
+    position: absolute;
+    left: 0px;
+    top: 50%;
+    width: 20%;
+    height: 5px;
+    background-color: var(--secondary);
+  }
+
+  .page-title::after {
+    content: '';
+    position: absolute;
+    right: 0px;
+    top: 50%;
+    width: 20%;
+    height: 5px;
+    background-color: var(--secondary);
+  }
 }
