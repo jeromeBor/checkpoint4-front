@@ -4,6 +4,12 @@ $theme-colors: (
   'info': #d3f3ee,
 );
 
-@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&display=swap');
+$font-family-sans-serif: 'Roboto slab', system-ui, -apple-system, 'Segoe UI',
+  Roboto, 'Helvetica Neue', Arial, 'Noto Sans', 'Liberation Sans', sans-serif,
+  'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+$font-family-monospace: 'Roboto slab', SFMono-Regular, Menlo, Monaco, Consolas,
+  'Liberation Mono', 'Courier New', monospace;
+
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400;700&family=Roboto+Slab:wght@100;200;300;400;500;600;700;800;900&display=swap');
 
 @import '~bootstrap/scss/bootstrap';

@@ -7,12 +7,12 @@ const Footer = () => {
   return (
     <Container className='footer' fluid>
       <Row className='columns d-flex align-items-start justify-content-sm-evenly'>
-        <Col sm={true} className='pt-2'>
-          <ul className='footer-list text-center p-0'>
+        <Col sm={true} className='py-2'>
+          <ul className='footer-list text-center p-0 m-0'>
             <li className='fw-bold text-uppercase text-secondary'>
               Ressources
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='https://react-bootstrap.netlify.app/'
                 target='_blank'
@@ -21,7 +21,7 @@ const Footer = () => {
                 Bootstrap
               </a>
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='https://stackoverflow.com/'
                 target='_blank'
@@ -32,12 +32,12 @@ const Footer = () => {
             </li>
           </ul>
         </Col>
-        <Col sm={true} className='pt-2'>
-          <ul className='footer-list text-center p-0'>
+        <Col sm={true} className='py-2'>
+          <ul className='footer-list text-center p-0 m-0'>
             <li className='fw-bold text-uppercase text-secondary '>
               Liens rapide
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='https://github.com/jeromeBor?tab=repositories'
                 target='_blank'
@@ -46,7 +46,7 @@ const Footer = () => {
                 Github Repository
               </a>
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='https://www.behance.net/nuzzler'
                 target='_blank'
@@ -55,7 +55,7 @@ const Footer = () => {
                 My behance
               </a>
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='mailto:jerome.borga@gmail.com'
                 target='_blank'
@@ -66,12 +66,12 @@ const Footer = () => {
             </li>
           </ul>
         </Col>
-        <Col sm={true} className='pt-2'>
+        <Col sm={true} className='py-2'>
           <ul className='footer-list text-center p-0 my-0'>
             <li className='fw-bold text-uppercase text-secondary'>
               Wild Code School{' '}
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href='https://www.wildcodeschool.com/fr-FR'
                 target='_blank'
@@ -80,7 +80,7 @@ const Footer = () => {
                 Website
               </a>
             </li>
-            <li>
+            <li class='fw-light'>
               <a
                 href=' https://www.wildcodeschool.com/fr-FR/blog/go-wilders
                 '
