@@ -35,7 +35,7 @@ const Footer = () => {
         <Col sm={true} className='py-2'>
           <ul className='footer-list text-center p-0 m-0'>
             <li className='fw-bold text-uppercase text-secondary '>
-              Liens rapide
+              Quick Links{' '}
             </li>
             <li class='fw-light'>
               <a
@@ -43,7 +43,7 @@ const Footer = () => {
                 target='_blank'
                 rel='noreferrer'
               >
-                Github Repository
+                Github
               </a>
             </li>
             <li class='fw-light'>
@@ -52,7 +52,7 @@ const Footer = () => {
                 target='_blank'
                 rel='noreferrer'
               >
-                My behance
+                Behance
               </a>
             </li>
             <li class='fw-light'>
@@ -61,7 +61,7 @@ const Footer = () => {
                 target='_blank'
                 rel='noreferrer'
               >
-                Email me
+                Contact me{' '}
               </a>
             </li>
           </ul>

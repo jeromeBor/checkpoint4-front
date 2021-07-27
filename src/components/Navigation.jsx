@@ -7,12 +7,14 @@ import '../styles/navigation.css';
 
 const Navigation = () => {
   const [isOpen, setOpen] = useState(false);
+
   const closeMenu = () => {
     setOpen(false);
   };
+
   return (
     <Navbar bg='primary' variant='dark' expand='sm' collapseOnSelect>
-      <Container>
+      <Container fluid>
         <Navbar.Brand
           variant='secondary'
           className='text-uppercase text-secondary fw-bold'
@@ -23,14 +25,15 @@ const Navigation = () => {
           <Hamburger
             toggled={isOpen}
             toggle={setOpen}
-            size={32}
+            size={40}
             color='#dacc3e '
+            rounded
           />
         </Navbar.Toggle>
-        <Navbar.Collapse id='basic-navbar-nav'>
+        <Navbar.Collapse id='basic-navbar-nav' className='mt-2'>
           <Nav className='ms-auto'>
             <LinkContainer exact to='/' onClick={closeMenu}>
-              <Nav.Link>Home</Nav.Link>
+              <Nav.Link active={false}>Home</Nav.Link>
             </LinkContainer>
             <LinkContainer to='/drawings' onClick={closeMenu}>
               <Nav.Link active={false}>Gallery</Nav.Link>

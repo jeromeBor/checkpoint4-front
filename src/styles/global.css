@@ -95,7 +95,7 @@ a:active {
   color: var(--secondary);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 400px) {
   .page-title::before {
     content: '';
     position: absolute;
