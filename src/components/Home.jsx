@@ -18,32 +18,35 @@ const Home = () => {
   }, []);
 
   return (
-    <article className='drawingpage-container p-3 '>
-      <Row className='homepage-drawing p-0'>
-        <Col className='welcome typewriter p-0 d-flex justify-content-center align-items-center'>
+    <article className='drawingpage-container'>
+      <div className='homepage-drawing'>
+        <Col className='welcome p-0 typewrite d-flex justify-content-center align-items-center'>
           <h1 className='text-secondary fw-bold text-center p-0 bg-transparent'>
             Welcome in my Art Gallery
           </h1>
         </Col>
-      </Row>
+      </div>
 
-      <Row>
+      <Row className='lastimage p-3 mx-auto  my-0 my-sm-3'>
         <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6 '>
           <img
-            src={drawings && drawings[0].imageLink}
-            alt={drawings && drawings[0].title}
+            src={drawings && drawings[drawings.length - 1].imageLink}
+            alt={drawings && drawings[drawings.length - 1].title}
           />
         </Col>
         <Col className='drawingpage-textcontainer'>
           <Col>
             <h1 className='p-1 ps-3 text-white '>
-              {drawings && drawings[0].title}
+              {drawings && drawings[drawings.length - 1].title}
             </h1>
           </Col>
           <Col className='fw-light pt-3'>
-            <p>{drawings && drawings[0].postContent}</p>
-            <Link to='/drawings' className='backto d-inline'>
-              <Button> Back to Gallery</Button>{' '}
+            <p>{drawings && drawings[drawings.length - 1].postContent}</p>
+            <Link
+              to={`/drawing/${drawings && drawings[drawings.length - 1].id}`}
+              className='backto d-inline'
+            >
+              <Button> See this drawing</Button>{' '}
             </Link>
           </Col>
         </Col>

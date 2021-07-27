@@ -1,8 +1,7 @@
 .drawingpage-container {
-  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
-  background-color: white;
-  max-width: 1000px;
   position: relative;
+  background-color: white;
+  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
 }
 
 .drawingpage-container h1 {
@@ -22,4 +21,10 @@
 
 .drawingpage-textcontainer {
   min-width: 250px;
+}
+
+.lastimage {
+  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
+  background-color: white;
+  max-width: 800px;
 }

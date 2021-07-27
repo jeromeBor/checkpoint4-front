@@ -20,9 +20,9 @@ const DrawingPage = () => {
   }, [id]);
 
   return (
-    <article className='drawingpage-container p-3 '>
+    <article className='drawingpage-container m-3 p-3'>
       <Row>
-        <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6 '>
+        <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6'>
           <img
             src={drawingData && drawingData[0].imageLink}
             alt={drawingData && drawingData[0].title}
