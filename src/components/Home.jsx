@@ -42,7 +42,7 @@ const Home = () => {
         </Col>
         <Col className='lastdrawing-textcontainer'>
           <Col>
-            <h2 className='p-1 ps-3 text-white bg-primary'>
+            <h2 className='p-1 ps-3 text-white bg-primary text-center'>
               {drawings && drawings[drawings.length - 1].title}
             </h2>
           </Col>

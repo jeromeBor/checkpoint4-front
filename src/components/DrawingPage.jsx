@@ -32,7 +32,7 @@ const DrawingPage = () => {
           <div onClick={() => toggleLightbox()} className='imagecontainer'>
             <div className='lightbox-hover'></div>
             <span className='lightbox-hover-tooltip m-0 p-2 '>
-              Clic on image to see on full screen
+              Cliquez pour agrandir l'image
             </span>
             <img
               src={drawingData && drawingData[0].imageLink}
@@ -42,14 +42,14 @@ const DrawingPage = () => {
         </Col>
         <Col className='drawingpage-textcontainer'>
           <Col>
-            <h1 className='p-1 ps-3 text-white '>
+            <h1 className='p-1 ps-3 text-white text-center'>
               {drawingData && drawingData[0].title}
             </h1>
           </Col>
           <Col className='fw-light pt-3'>
             <p>{drawingData && drawingData[0].postContent}</p>
             <Link to='/drawings' className='backto d-inline'>
-              <Button>Revenir la galerie</Button>{' '}
+              <Button size='sm'>Revenir la galerie</Button>{' '}
             </Link>
           </Col>
         </Col>
