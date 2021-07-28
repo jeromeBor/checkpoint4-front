@@ -1,4 +1,6 @@
 import React, { useEffect, useState } from 'react';
+import Lightbox from 'react-awesome-lightbox';
+import 'react-awesome-lightbox/build/style.css';
 import '../styles/drawingpage.css';
 import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
@@ -8,8 +10,13 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 const DrawingPage = () => {
   const { id } = useParams();
-
+  const [isLightboxOn, setIsLightboxOff] = useState(false);
   const [drawingData, setDrawingData] = useState();
+
+  function toggleLightbox() {
+    setIsLightboxOff(!isLightboxOn);
+    console.log(isLightboxOn);
+  }
 
   useEffect(() => {
     async function fetchOneApiDrawing() {
@@ -23,10 +30,16 @@ const DrawingPage = () => {
     <article className='drawingpage-container m-3 p-3'>
       <Row>
         <Col className='drawingpage-imgcontainer mx-auto col-12 col-md-6'>
-          <img
-            src={drawingData && drawingData[0].imageLink}
-            alt={drawingData && drawingData[0].title}
-          />
+          <div onClick={() => toggleLightbox()} className='imagecontainer'>
+            <div className='lightbox-hover'></div>
+            <span className='lightbox-hover-tooltip m-0 p-2 '>
+              Clic on image to see on full screen
+            </span>
+            <img
+              src={drawingData && drawingData[0].imageLink}
+              alt={drawingData && drawingData[0].title}
+            />
+          </div>
         </Col>
         <Col className='drawingpage-textcontainer'>
           <Col>
@@ -37,10 +50,18 @@ const DrawingPage = () => {
           <Col className='fw-light pt-3'>
             <p>{drawingData && drawingData[0].postContent}</p>
             <Link to='/drawings' className='backto d-inline'>
-              <Button> Back to Gallery</Button>{' '}
+              <Button>Revenir la galerie</Button>{' '}
             </Link>
           </Col>
         </Col>
+
+        {isLightboxOn ? (
+          <Lightbox
+            image={drawingData && drawingData[0].imageLink}
+            title={drawingData && drawingData[0].title}
+            onClose={toggleLightbox}
+          ></Lightbox>
+        ) : null}
       </Row>
     </article>
   );

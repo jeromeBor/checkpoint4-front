@@ -1,5 +1,4 @@
 .drawingpage-container {
-  position: relative;
   background-color: white;
   box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
 }
@@ -23,8 +22,36 @@
   min-width: 250px;
 }
 
-.lastimage {
-  box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
-  background-color: white;
-  max-width: 800px;
+.imagecontainer {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  position: relative;
+}
+
+.lightbox-hover {
+  position: absolute;
+  opacity: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(218, 204, 62, 0.5);
+  transition: all 0.3s ease;
+}
+
+.lightbox-hover-tooltip {
+  position: absolute;
+  bottom: 45%;
+  width: 100%;
+  text-align: center;
+  opacity: 0;
+  transition: all 0.3s ease;
+  border: 1px solid black;
+}
+
+.imagecontainer:hover > .lightbox-hover {
+  opacity: 1;
+}
+
+.imagecontainer:hover > .lightbox-hover-tooltip {
+  opacity: 1;
 }

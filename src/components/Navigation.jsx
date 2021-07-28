@@ -7,7 +7,6 @@ import '../styles/navigation.css';
 
 const Navigation = () => {
   const [isOpen, setOpen] = useState(false);
-
   const closeMenu = () => {
     setOpen(false);
   };
@@ -15,12 +14,6 @@ const Navigation = () => {
   return (
     <Navbar bg='primary' variant='dark' expand='sm' collapseOnSelect>
       <Container fluid>
-        <Navbar.Brand
-          variant='secondary'
-          className='text-uppercase text-secondary fw-bold'
-        >
-          Jerome's Gallery
-        </Navbar.Brand>
         <Navbar.Toggle className='p-0'>
           <Hamburger
             toggled={isOpen}
@@ -30,16 +23,16 @@ const Navigation = () => {
             rounded
           />
         </Navbar.Toggle>
-        <Navbar.Collapse id='basic-navbar-nav' className='mt-2'>
+        <Navbar.Collapse id='basic-navbar-nav'>
           <Nav className='ms-auto'>
             <LinkContainer exact to='/' onClick={closeMenu}>
               <Nav.Link className='mx-2' active={false}>
-                Home
+                Accueil
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/drawings' onClick={closeMenu}>
               <Nav.Link className='mx-2' active={false}>
-                Gallery
+                Galerie
               </Nav.Link>
             </LinkContainer>
             <LinkContainer to='/form' onClick={closeMenu}>
