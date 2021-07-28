@@ -4,7 +4,6 @@ import 'react-awesome-lightbox/build/style.css';
 import '../styles/drawingpage.css';
 import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
-import { formatDateUnix } from '../utils/formatDate';
 
 import { Row, Col, Button } from 'react-bootstrap';
 
@@ -57,8 +56,8 @@ const DrawingPage = () => {
 
         {isLightboxOn ? (
           <Lightbox
-            image={drawingData && drawingData[0].imageLink}
-            title={drawingData && drawingData[0].title}
+            image={drawingData[0].imageLink}
+            title={drawingData[0].title}
             onClose={toggleLightbox}
           ></Lightbox>
         ) : null}

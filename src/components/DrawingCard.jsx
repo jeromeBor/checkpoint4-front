@@ -9,7 +9,7 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
     <>
       {filteredDrawings &&
         filteredDrawings.map((drawing) => (
-          <Link to={`/drawing/${drawing.id}`}>
+          <Link key={drawing.id} to={`/drawing/${drawing.id}`}>
             <Card key={drawing.id} className='drawing-card m-2'>
               <div className='cardimage-overlay-text fw-bold text-secondary'>
                 <span className='cardtitle fs-2'> {drawing.title}</span>

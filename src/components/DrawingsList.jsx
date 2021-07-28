@@ -29,9 +29,7 @@ const DrawingsList = () => {
       const data = await fetchDrawings();
       setDrawings(data);
       setFileteredDrawings(data);
-      setTimeout(() => {
-        setIsLoading(false);
-      }, 1200);
+      setIsLoading(false);
     }
     fetchApiDrawings();
   }, []);
@@ -47,21 +45,13 @@ const DrawingsList = () => {
 
   return (
     <Container fluid className='pagecontainer  my-5'>
-      {!isLoading ? (
-        <>
-          <h1 className='page-title fw-bold text-center mx-auto'>
-            La gallerie
-          </h1>
-          <div className='filter-button  d-flex justify-content-center '>
-            <FilterButtons tags={tags} filter={filter} showAll={showAll} />
-          </div>
-          <div className='drawingcard-wrapper'>
-            <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
-          </div>
-        </>
-      ) : (
-        <Loader />
-      )}
+      <h1 className='page-title fw-bold text-center mx-auto'>La gallerie</h1>
+      <div className='filter-button  d-flex justify-content-center '>
+        <FilterButtons tags={tags} filter={filter} showAll={showAll} />
+      </div>
+      <div className='drawingcard-wrapper'>
+        <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
+      </div>
     </Container>
   );
 };
