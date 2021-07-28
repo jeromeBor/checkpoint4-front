@@ -25,9 +25,6 @@ const formatDate = (timestamp) => {
   if (hour < 10) {
     hour = `0${hour}`;
   }
-  if (minute < 10) {
-    minute = `0${minute}`;
-  }
 
   return `${day} ${months[month]} ${year} `;
 };
@@ -51,4 +48,4 @@ const formatDateUnix = (timestamp) => {
   return formattedTime;
 };
 
-export { formatDate, showOnlyHour, formatDateUnix };
+export { formatDate, formatDateUnix };
