@@ -14,6 +14,9 @@ const Navigation = () => {
   return (
     <Navbar bg='primary' variant='dark' expand='sm' collapseOnSelect>
       <Container fluid>
+        <Navbar.Brand className='text-secondary fs-6'>
+          La galerie de Jérôme{' '}
+        </Navbar.Brand>
         <Navbar.Toggle className='p-0'>
           <Hamburger
             toggled={isOpen}
