@@ -9,10 +9,6 @@ span {
   font-size: 0.9rem;
 } */
 
-/* button {
-  font-family: 'Roboto Slab' !important;
-} */
-
 body {
   margin: 0;
   font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
@@ -70,10 +66,11 @@ h2 {
   color: white !important;
 }
 
+/* 
 button:focus {
   background: var(--secondary) !important;
   color: var(--primary);
-}
+} */
 
 a {
   display: flex;

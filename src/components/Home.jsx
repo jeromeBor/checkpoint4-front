@@ -50,7 +50,9 @@ const Home = () => {
               to={`/drawing/${drawings && drawings[drawings.length - 1].id}`}
               className='backto d-inline my-auto'
             >
-              <Button size='sm'>Voir cette oeuvre</Button>{' '}
+              <Button variant='primary' size='sm'>
+                Voir cette oeuvre
+              </Button>{' '}
             </Link>
           </Col>
         </Col>

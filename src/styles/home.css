@@ -3,6 +3,10 @@
   height: 100%;
 }
 
+.page-title {
+  width: 90%;
+}
+
 .homepage-drawing {
   width: 100%;
 }
@@ -72,6 +76,7 @@
 
 .lastdrawing-container {
   position: relative;
+  width: 100%;
 }
 
 .lastdrawing-imgcontainer img {

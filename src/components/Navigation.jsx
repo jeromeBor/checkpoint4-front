@@ -38,9 +38,9 @@ const Navigation = () => {
                 Galerie
               </Nav.Link>
             </LinkContainer>
-            <LinkContainer to='/form' onClick={closeMenu}>
+            <LinkContainer to='/contact' onClick={closeMenu}>
               <Nav.Link className='mx-2' active={false}>
-                Form
+                Contact
               </Nav.Link>
             </LinkContainer>
           </Nav>

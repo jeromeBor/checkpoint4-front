@@ -1,16 +1,14 @@
 import React, { useState, useEffect } from 'react';
 import { useForm } from 'react-hook-form';
-
 import axios from 'axios';
-import fetchTags from '../utils/fetchTags';
+import fetchTags from '../../utils/fetchTags';
 
-import '../styles/form.css';
+import '../../styles/form.css';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
-function FormDrawing() {
+function CreateDrawing() {
   const [tags, setTags] = useState();
 
-  // const [drawginContent, setDrawingContent] = useState();
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
 
   useEffect(() => {
@@ -147,4 +145,4 @@ function FormDrawing() {
   );
 }
 
-export default FormDrawing;
+export default CreateDrawing;
