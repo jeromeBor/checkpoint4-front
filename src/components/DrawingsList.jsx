@@ -47,16 +47,21 @@ const DrawingsList = () => {
 
   return (
     <Container fluid className='pagecontainer  my-5'>
-      <h1 className='page-title fw-bold text-center mx-auto'>La gallerie</h1>
-      <div className='filter-button  d-flex justify-content-center '>
-        <FilterButtons tags={tags} filter={filter} showAll={showAll} />
-      </div>
-      <div className='drawingcard-wrapper'>
-        {!isLoading ? (
-          <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
-        ) : null}
-      </div>
-      {isLoading ? <Loader /> : null}
+      {!isLoading ? (
+        <>
+          <h1 className='page-title fw-bold text-center mx-auto'>
+            La gallerie
+          </h1>
+          <div className='filter-button  d-flex justify-content-center '>
+            <FilterButtons tags={tags} filter={filter} showAll={showAll} />
+          </div>
+          <div className='drawingcard-wrapper'>
+            <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
+          </div>
+        </>
+      ) : (
+        <Loader />
+      )}
     </Container>
   );
 };
