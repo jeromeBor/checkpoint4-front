@@ -1,8 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import '../styles/home.css';
 import { Link } from 'react-router-dom';
-import { LinkContainer } from 'react-router-bootstrap';
-import { Nav } from 'react-bootstrap';
 
 import fetchDrawings from '../utils/fetchDrawings';
 import { Col, Row, Button } from 'react-bootstrap';

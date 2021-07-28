@@ -2,7 +2,6 @@ import React from 'react';
 import '../styles/drawingcard.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-import { formatDateUnix } from '../utils/formatDate';
 
 const DrawingCard = ({ filteredDrawings, tags }) => {
   return (

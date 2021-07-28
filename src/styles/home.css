@@ -47,7 +47,7 @@
   max-width: 1000px;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
   flex-direction: row;
 }
 
@@ -82,7 +82,7 @@
   overflow: hidden;
   display: flex;
   justify-content: center;
-  align-items: start;
+  align-items: flex-start;
 }
 
 .lastdrawing-textcontainer {

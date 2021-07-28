@@ -3,7 +3,6 @@ import React, { useState, useEffect } from 'react';
 import fetchDrawings from '../utils/fetchDrawings';
 import fetchTags from '../utils/fetchTags';
 import { Container } from 'react-bootstrap';
-import Loader from '../components/Loader';
 import '../styles/drawinglist.css';
 import DrawingCard from './DrawingCard';
 import FilterButtons from './FilterButtons';
@@ -13,7 +12,6 @@ const DrawingsList = () => {
   const [tags, setTags] = useState();
 
   const [filteredDrawings, setFileteredDrawings] = useState();
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     async function fetchApiTags() {
@@ -24,12 +22,10 @@ const DrawingsList = () => {
   }, []);
 
   useEffect(() => {
-    setIsLoading(true);
     async function fetchApiDrawings() {
       const data = await fetchDrawings();
       setDrawings(data);
       setFileteredDrawings(data);
-      setIsLoading(false);
     }
     fetchApiDrawings();
   }, []);
