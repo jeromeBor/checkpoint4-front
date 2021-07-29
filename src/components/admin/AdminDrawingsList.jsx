@@ -25,7 +25,10 @@ const AdminDrawingsList = ({ drawings, handleShow }) => {
               <Col> {drawing.tagsId}</Col>
               <Col className='d-flex flex-column justify-content-center flex-sm-row'>
                 <Button className='m-1 ' size='sm' variant='warning'>
-                  <Link to='/admin/update-drawing/:id' className='text-white'>
+                  <Link
+                    to={`/admin/update-drawing/${drawing.id}`}
+                    className='text-white'
+                  >
                     Editer
                   </Link>
                 </Button>
