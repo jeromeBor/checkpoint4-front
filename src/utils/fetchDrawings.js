@@ -1,7 +1,12 @@
-import axios from 'axios';
+import axios from './axiosConfig';
 
 const fetchDrawings = () => {
-  return axios.get('http://localhost:4000/drawings').then((r) => r.data);
+  return (
+    axios
+      .get(`/drawings`)
+      // .get('http://localhost:4000/drawings')
+      .then((r) => r.data)
+  );
 };
 
 export default fetchDrawings;

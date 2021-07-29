@@ -52,7 +52,7 @@ const Home = () => {
             >
               <Button variant='primary' size='sm'>
                 Voir cette oeuvre
-              </Button>{' '}
+              </Button>
             </Link>
           </Col>
         </Col>

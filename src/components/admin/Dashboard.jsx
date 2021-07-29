@@ -1,14 +1,41 @@
 import React, { useEffect, useState } from 'react';
-import { Container, Row, Col, Button } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
+import { Container, Row, Col, Button, Form } from 'react-bootstrap';
 import fetchDrawings from '../../utils/fetchDrawings';
 import fetchTags from '../../utils/fetchTags';
+import deleteOneDrawing from '../../utils/DeleteOneDrawing';
+import ValidationPopup from './ValidationPopup';
 
-import { formatDateUnix } from '../../utils/formatDate';
+import AdminDrawingsList from './AdminDrawingsList';
+import AdminTagsList from './AdminTagsList';
 
 const Dashboard = () => {
   const [drawings, setDrawings] = useState();
   const [tags, setTags] = useState();
   const [panel, setPanel] = useState(true);
+  const [show, setShow] = useState(false);
+  const [itemIdToDelete, setItemIdToDelete] = useState();
+
+  // const handleClose = () => setPopupIsOpen(false);
+  // const handleShow = () => setPopupIsOpen(true);
+
+  const togglePopup = (e) => {
+    setItemIdToDelete(parseInt(e.target.dataset.id, 10));
+    // setShowPopup(!showPopup);
+  };
+
+  const handleDeleteAndClose = async (id) => {
+    await deleteOneDrawing(id);
+    setDrawings(drawings.filter((drawing) => drawing.id !== id));
+    setShow(false);
+  };
+
+  const handleShow = (e) => {
+    setItemIdToDelete(parseInt(e.target.dataset.id, 10));
+    setShow(true);
+  };
+
+  const handleClose = () => setShow(false);
 
   function togglePanel() {
     setPanel(!panel);
@@ -32,6 +59,12 @@ const Dashboard = () => {
 
   return (
     <Container>
+      <ValidationPopup
+        handleClose={handleClose}
+        show={show}
+        setShow={setShow}
+        onValidation={() => handleDeleteAndClose(itemIdToDelete)}
+      />
       <Row>
         <Col className='mx-auto '>
           <h1 className='page-title fw-bold text-center bg-transparent mx-auto mt-3'>
@@ -47,49 +80,34 @@ const Dashboard = () => {
             <Button onClick={togglePanel}>Afficher les dessins</Button>
           )}
         </Col>
+        <Col className='d-flex align-items-center justify-content-center p-2'>
+          <Form>
+            <Form.Group controlId='formBasicEmail'>
+              <Form.Control type='email' placeholder='Rechercher par nom' />
+            </Form.Group>
+            <Form.Group />
+          </Form>
+        </Col>
+        <Col>
+          <Button variant='success'>
+            <Link to='/admin/create-drawing'>Créer un nouveau dessin</Link>
+          </Button>
+        </Col>
       </Row>
-      <Row className='bg-secondary d-flex justify-content-center align-items-center'>
-        <Col className='fw-bold'>Nom</Col>
-        <Col className='fw-bold'>Date de création</Col>
-        <Col className='fw-bold'>Tag</Col>
-        <Col className='fw-bold'>Actions</Col>
-      </Row>
-      {drawings &&
-        drawings.map((drawing) => (
-          <Row className=' d-flex justify-content-center align-items-center'>
-            <Col>{drawing.title}</Col>{' '}
-            <Col>{formatDateUnix(drawing.dateOfWrite)}</Col>{' '}
-            <Col> {drawing.tagsId}</Col>{' '}
-            <Col className='d-flex flex-diretion-row justify-content-center'>
-              <Button className='m-1' size='sm' variant='warning'>
-                Editer
-              </Button>
-              <Button className='m-1' size='sm' variant='danger'>
-                Supprimer
-              </Button>
-            </Col>
-          </Row>
-        ))}
-      <Row className='bg-secondary d-flex justify-content-center align-items-center'>
-        <Col className='fw-bold'>Nom</Col>
-        <Col className='fw-bold'>ID</Col>
-        <Col className='fw-bold'>Actions</Col>
-      </Row>
-      {tags &&
-        tags.map((tag) => (
-          <Row className=' d-flex justify-content-center align-items-center'>
-            <Col>{tag.title}</Col>
-            <Col> {tag.id}</Col>
-            <Col className='d-flex flex-diretion-row justify-content-start'>
-              <Button className='m-1' size='sm' variant='warning'>
-                Editer
-              </Button>
-              <Button className='m-1' size='sm' variant='danger'>
-                Supprimer
-              </Button>
-            </Col>
-          </Row>
-        ))}
+      {panel ? (
+        <AdminDrawingsList
+          handleShow={handleShow}
+          show={show}
+          drawings={drawings}
+          setItemIdToDelete={setItemIdToDelete}
+        />
+      ) : (
+        <AdminTagsList
+          togglePopup={togglePopup}
+          tags={tags}
+          setItemIdToDelete={setItemIdToDelete}
+        />
+      )}
     </Container>
   );
 };
