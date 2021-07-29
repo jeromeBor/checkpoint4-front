@@ -15,26 +15,18 @@ const Dashboard = () => {
   const [panel, setPanel] = useState(true);
   const [show, setShow] = useState(false);
   const [itemIdToDelete, setItemIdToDelete] = useState();
-
-  // const handleClose = () => setPopupIsOpen(false);
-  // const handleShow = () => setPopupIsOpen(true);
-
-  const togglePopup = (e) => {
-    setItemIdToDelete(parseInt(e.target.dataset.id, 10));
-    // setShowPopup(!showPopup);
-  };
+  const [itemNameToDelete, setItemNameToDelete] = useState();
 
   const handleDeleteAndClose = async (id) => {
     await deleteOneDrawing(id);
     setDrawings(drawings.filter((drawing) => drawing.id !== id));
     setShow(false);
   };
-
   const handleShow = (e) => {
     setItemIdToDelete(parseInt(e.target.dataset.id, 10));
+    setItemNameToDelete(e.target.dataset.name, 10);
     setShow(true);
   };
-
   const handleClose = () => setShow(false);
 
   function togglePanel() {
@@ -60,6 +52,7 @@ const Dashboard = () => {
   return (
     <Container>
       <ValidationPopup
+        itemNameToDelete={itemNameToDelete}
         handleClose={handleClose}
         show={show}
         setShow={setShow}
@@ -75,10 +68,21 @@ const Dashboard = () => {
       <Row>
         <Col className='d-flex align-items-center justify-content-center p-2'>
           {panel ? (
-            <Button onClick={togglePanel}>Afficher les tags</Button>
+            <Button size='sm' onClick={togglePanel}>
+              Afficher les tags
+            </Button>
           ) : (
-            <Button onClick={togglePanel}>Afficher les dessins</Button>
+            <Button size='sm' onClick={togglePanel}>
+              Afficher les dessins
+            </Button>
           )}
+        </Col>
+        <Col className='d-flex align-items-center justify-content-center p-2'>
+          <Button size='sm' variant='success'>
+            <Link className='text-white' to='/admin/create-drawing'>
+              Créer un nouveau dessin
+            </Link>
+          </Button>
         </Col>
         <Col className='d-flex align-items-center justify-content-center p-2'>
           <Form>
@@ -88,25 +92,15 @@ const Dashboard = () => {
             <Form.Group />
           </Form>
         </Col>
-        <Col>
-          <Button variant='success'>
-            <Link to='/admin/create-drawing'>Créer un nouveau dessin</Link>
-          </Button>
-        </Col>
       </Row>
       {panel ? (
         <AdminDrawingsList
           handleShow={handleShow}
           show={show}
           drawings={drawings}
-          setItemIdToDelete={setItemIdToDelete}
         />
       ) : (
-        <AdminTagsList
-          togglePopup={togglePopup}
-          tags={tags}
-          setItemIdToDelete={setItemIdToDelete}
-        />
+        <AdminTagsList tags={tags} setItemIdToDelete={setItemIdToDelete} />
       )}
     </Container>
   );

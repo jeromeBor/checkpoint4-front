@@ -1,32 +1,28 @@
-import React, { useState } from 'react';
+import React from 'react';
 import '../../styles/validationpopup.css';
 import { Button, Modal } from 'react-bootstrap';
 
 function ConfirmationPopup({
-  itemIdToDelete,
+  itemNameToDelete,
   show,
-  setShow,
   handleClose,
   onValidation,
 }) {
   return (
     <>
-      {/* <Button variant='primary' onClick={handleShow}>
-        Launch demo modal
-      </Button> */}
-
       <Modal show={show} onHide={handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Attention !</Modal.Title>
+          <Modal.Title className='text-danger'>Attention !</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Êtes-vous sûr de vouloir supprimer cette entrée ?
+          Êtes-vous sûr de vouloir supprimer '{itemNameToDelete}'' de la base de
+          donnée ?
         </Modal.Body>
         <Modal.Footer>
           <Button variant='secondary' onClick={handleClose}>
             En fait, non
           </Button>
-          <Button variant='primary' onClick={onValidation()}>
+          <Button variant='danger' onClick={() => onValidation()}>
             J'en suis sûr
           </Button>
         </Modal.Footer>
