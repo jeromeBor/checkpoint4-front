@@ -24,7 +24,6 @@ function UpdateDrawing() {
   const {
     setValue,
     register,
-    reset,
     handleSubmit,
     formState: { errors },
   } = useForm({ defaultValues: preloadedValues });
@@ -63,10 +62,6 @@ function UpdateDrawing() {
       setDrawingIsUpdating(false);
     }, 1000);
   };
-
-  if (!drawingData) {
-    return <p>Chargement ...</p>;
-  }
 
   return (
     <div className='pagecontainer p-4'>
@@ -161,7 +156,7 @@ function UpdateDrawing() {
               className='text-white btn-default btn-block d-flex justify-content-center align-items-center '
             >
               <Spinner animation='border' size='sm' />
-              <span className='ms-2'> Drawing sending...</span>
+              <span className='ms-2'>Mise à jour...</span>
             </Button>
           )}
         </div>

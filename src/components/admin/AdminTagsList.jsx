@@ -5,7 +5,6 @@ import { Row, Col, Button } from 'react-bootstrap';
 
 const AdminTagsList = ({
   toggleValidationButtonTag,
-  setValidationButtonTag,
   validationButtonTag,
   tags,
   onValidation,
@@ -27,7 +26,7 @@ const AdminTagsList = ({
             <Col>{tag.title}</Col>
             <Col className='d-flex flex-column justify-content-center flex-sm-row'>
               <Button className='m-1' size='sm' variant='warning'>
-                <Link className='text-white' to='/admin/update-tag/:id'>
+                <Link className='text-white' to={`/admin/update-tag/${tag.id}`}>
                   Editer
                 </Link>
               </Button>

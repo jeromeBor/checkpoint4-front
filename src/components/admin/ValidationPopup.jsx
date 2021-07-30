@@ -15,7 +15,7 @@ function ConfirmationPopup({
           <Modal.Title className='text-danger'>Attention !</Modal.Title>
         </Modal.Header>
         <Modal.Body>
-          Êtes-vous sûr de vouloir supprimer '{itemNameToDelete}'' de la base de
+          Êtes-vous sûr de vouloir supprimer '{itemNameToDelete}' de la base de
           donnée ?
         </Modal.Body>
         <Modal.Footer>

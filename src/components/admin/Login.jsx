@@ -35,7 +35,7 @@ const Login = () => {
       </Row>
       <Col className='col-6  mx-auto m-2'>
         <Button variant='outline-white' type='submit' className='w-100 '>
-          Revenir à l'accueil
+          <Link to='/'> Revenir à l'accueil</Link>
         </Button>
       </Col>
     </div>
