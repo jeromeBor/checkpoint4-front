@@ -20,7 +20,7 @@ const AdminDrawingsList = ({ drawings, handleShow }) => {
           drawings.map((drawing) => (
             <Row className='d-flex justify-content-center align-items-center'>
               <Col className='col-auto'>{drawing.id}</Col>{' '}
-              <Col>{drawing.title}</Col>
+              <Col className='col-3'>{drawing.title}</Col>
               <Col>{formatDateUnix(drawing.dateOfWrite)}</Col>
               <Col> {drawing.tagsId}</Col>
               <Col className='d-flex flex-column justify-content-center flex-sm-row'>

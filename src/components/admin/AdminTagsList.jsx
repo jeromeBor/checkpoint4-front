@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Row, Col, Button } from 'react-bootstrap';
 
-const AdminTagsList = ({ tags }) => {
+const AdminTagsList = ({ tags, onValidation }) => {
+  const [validationButtonTag, setValidationButtonTag] = useState(false);
+
+  function toggleValidationButtonTag() {
+    setValidationButtonTag(!validationButtonTag);
+  }
+
   return (
     <div>
       <Row className='bg-secondary d-flex justify-content-center align-items-center'>
@@ -18,10 +24,23 @@ const AdminTagsList = ({ tags }) => {
             <Col>{tag.title}</Col>
             <Col className='d-flex flex-column justify-content-center flex-sm-row'>
               <Button className='m-1' size='sm' variant='warning'>
-                <Link to='/admin/update-tag/:id'>Editer</Link>
+                <Link className='text-white' to='/admin/update-tag/:id'>
+                  Editer
+                </Link>
               </Button>
               <Button
                 data-id={tag.id}
+                data-name={tag.titme}
+                onclick={toggleValidationButtonTag}
+                className='m-1'
+                size='sm'
+                variant='danger'
+              >
+                Supprimer
+              </Button>
+
+              <Button
+                onClick={() => onValidation()}
                 className='m-1'
                 size='sm'
                 variant='danger'
