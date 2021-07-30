@@ -1,11 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Container, Row, Col, Button, Form } from 'react-bootstrap';
+import { Container, Row, Col } from 'react-bootstrap';
 import fetchDrawings from '../../utils/fetchDrawings';
 import fetchTags from '../../utils/fetchTags';
-import deleteOneDrawing from '../../utils/DeleteOneDrawing';
+import deleteOneDrawing from '../../utils/deleteOneDrawing';
+import deleteOneTag from '../../utils/deleteOneTag';
 import ValidationPopup from './ValidationPopup';
-
+import ControlPanel from './ControlPanel';
 import AdminDrawingsList from './AdminDrawingsList';
 import AdminTagsList from './AdminTagsList';
 
@@ -16,6 +16,7 @@ const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [itemIdToDelete, setItemIdToDelete] = useState();
   const [itemNameToDelete, setItemNameToDelete] = useState();
+  const [validationButtonTag, setValidationButtonTag] = useState(false);
 
   const handleDeleteAndCloseDrawing = async (id) => {
     await deleteOneDrawing(id);
@@ -24,9 +25,10 @@ const Dashboard = () => {
   };
 
   const handleDeleteTag = async (id) => {
-    await deleteOneDrawing(id);
-    setDrawings(drawings.filter((drawing) => drawing.id !== id));
-    setShow(false);
+    await deleteOneTag(id);
+    setTags(tags.filter((tag) => tag.id !== id));
+    setValidationButtonTag(false);
+    console.log(validationButtonTag);
   };
 
   const handleShow = (e) => {
@@ -34,6 +36,12 @@ const Dashboard = () => {
     setItemNameToDelete(e.target.dataset.name, 10);
     setShow(true);
   };
+
+  function toggleValidationButtonTag(e) {
+    setItemIdToDelete(parseInt(e.target.dataset.id, 10));
+    setItemNameToDelete(e.target.dataset.name, 10);
+    setValidationButtonTag(!validationButtonTag);
+  }
 
   const handleClose = () => setShow(false);
 
@@ -73,36 +81,8 @@ const Dashboard = () => {
           </h1>
         </Col>
       </Row>
-      <Row className='flex-column flex-md-row'>
-        <Col className='d-flex align-items-center justify-content-center p-2'>
-          {panel ? (
-            <Button size='sm' onClick={togglePanel}>
-              Afficher les tags
-            </Button>
-          ) : (
-            <Button size='sm' onClick={togglePanel}>
-              Afficher les dessins
-            </Button>
-          )}
-        </Col>
-        <Col className='d-flex align-items-center justify-content-center p-2'>
-          <Button size='sm' variant='success'>
-            <Link className='text-white' to='/admin/create-drawing'>
-              Créer un nouveau dessin
-            </Link>
-          </Button>
-        </Col>
-        <Col className='d-flex align-items-center justify-content-center p-2'>
-          <Form className='d-flex flex-row'>
-            <Form.Group controlId='formBasicEmail'>
-              <Form.Control type='email' placeholder='Rechercher par nom' />
-            </Form.Group>
-            <Button size='sm' onClick={togglePanel}>
-              Go
-            </Button>
-          </Form>
-        </Col>
-      </Row>
+      <ControlPanel togglePanel={togglePanel} panel={panel} />
+
       {panel ? (
         <AdminDrawingsList
           handleShow={handleShow}
@@ -111,7 +91,10 @@ const Dashboard = () => {
         />
       ) : (
         <AdminTagsList
+          setValidationButtonTag={setValidationButtonTag}
+          validationButtonTag={validationButtonTag}
           tags={tags}
+          toggleValidationButtonTag={toggleValidationButtonTag}
           setItemIdToDelete={setItemIdToDelete}
           onValidation={() => handleDeleteTag(itemIdToDelete)}
         />
