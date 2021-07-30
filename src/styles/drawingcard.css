@@ -1,7 +1,10 @@
 .drawing-card {
   position: relative;
   box-shadow: 1px 1px 10px 1px rgb(182, 182, 182);
+  width: 300px;
+  background-color: white;
 }
+
 .drawingcard-wrapper .card-body {
   padding: 4px;
 }
@@ -62,10 +65,10 @@
   bottom: 5px;
 }
 
-.drawing-card:hover > .cardimage-overlay-text {
+.drawing-card a:hover > .cardimage-overlay-text {
   opacity: 1;
 }
 
-.drawing-card:hover > .cardimage-overlay {
+.drawing-card a:hover > .cardimage-overlay {
   opacity: 0.7;
 }
