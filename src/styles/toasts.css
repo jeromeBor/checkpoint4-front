@@ -1,0 +1,49 @@
+/*--- GLOBAL TOAST ---*/
+
+.toast {
+  position: fixed;
+  top: 50px;
+  right: 35%;
+  max-width: 600px;
+}
+
+.toast-header {
+  justify-content: center;
+  color: var(--primary);
+}
+
+.createnewstoast-container,
+.deletenewstoast-container,
+.deletenewstoast-container,
+.messagesenttoast-container {
+  display: flex;
+  justify-content: center;
+}
+
+/*--- CREATE NEWS TOAST ---*/
+
+.createnewstoast-container .toast-header svg {
+  margin: 0px 1rem 0px 1rem;
+  color: var(--success);
+}
+
+/*--- SENT MESSAGE TOAST ---*/
+
+.messagesenttoast-container.toast-header svg {
+  margin: 0px 1rem 0px 1rem;
+  color: var(--success);
+}
+
+/*--- DELETE NEWS TOAST  ---*/
+
+.deletenewstoast-container .toast-header svg {
+  margin: 0px 1rem 0px 1rem;
+  color: red;
+}
+
+/*--- UPDATE NEWS TOAST  ---*/
+
+.updatenewstoast-container .toast-header svg {
+  margin: 0px 1rem 0px 1rem;
+  color: var(--success);
+}
