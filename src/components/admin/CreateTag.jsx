@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
-import fetchTags from '../../utils/fetchTags';
 
 import '../../styles/form.css';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
@@ -17,8 +16,7 @@ function CreateDrawing() {
       .finally(
         setTimeout(() => {
           setIsTagCreating(false);
-        }, 2000),
-        console.log(formFields)
+        }, 2000)
       );
 
   const {

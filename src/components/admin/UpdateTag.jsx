@@ -11,7 +11,6 @@ function UpdateDrawing() {
   const { id } = useParams();
 
   const [tagIsUpdating, setTagIsUpdating] = useState(false);
-  const [tagData, setTagData] = useState();
 
   const preloadedValues = {
     title: 'Chargement...',
@@ -27,7 +26,6 @@ function UpdateDrawing() {
   useEffect(() => {
     async function fetchOneTagData() {
       const data = await fetchOneTag(id);
-      setTagData(data[0]);
       setValue('title', data[0].title);
     }
     fetchOneTagData();
@@ -45,7 +43,7 @@ function UpdateDrawing() {
   return (
     <div className='pagecontainer p-4'>
       <h1 className='page-title fw-bold text-center mx-auto'>
-        Mise a jour de Tag
+        Mise à jour de Tag
       </h1>
       <Form
         onSubmit={handleSubmit(onSubmit)}

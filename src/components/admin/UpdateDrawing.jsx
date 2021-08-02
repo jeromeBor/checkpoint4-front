@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useMemo } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
@@ -19,6 +19,7 @@ function UpdateDrawing() {
     title: 'Chargement...',
     imageLink: 'Chargement...',
     postContent: 'Chargement...',
+    tagsId: 'Chargement...',
   };
 
   const {
@@ -28,13 +29,6 @@ function UpdateDrawing() {
     formState: { errors },
   } = useForm({ defaultValues: preloadedValues });
 
-  // useEffect(() => {
-  //   setValue('title', drawingData.title, {
-  //     shouldValidate: true,
-  //     shouldDirty: true,
-  //   });
-  // }, [drawingData]);
-
   useEffect(() => {
     async function fetchOneDrawingData() {
       const data = await fetchOneDrawing(id);
@@ -43,6 +37,7 @@ function UpdateDrawing() {
       setValue('imageLink', data[0].imageLink);
       setValue('postContent', data[0].postContent);
       setValue('tagsId', data[0].tagsId);
+      console.log(data[0].tagsId);
     }
     fetchOneDrawingData();
   }, [setValue]);
@@ -117,6 +112,7 @@ function UpdateDrawing() {
         <Form.Group className='mb-3' value=''>
           <Form.Label>Tag</Form.Label>
           <Form.Select
+            // defaultValue={drawingData && drawingData[0].tagsId}
             name='tagsId'
             size='sm'
             {...register('tagsId', {

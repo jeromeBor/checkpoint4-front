@@ -16,7 +16,7 @@ const Dashboard = () => {
   const [show, setShow] = useState(false);
   const [itemIdToDelete, setItemIdToDelete] = useState();
   const [itemNameToDelete, setItemNameToDelete] = useState();
-  const [validationButtonTag, setValidationButtonTag] = useState(false);
+  const [toggleDeleteTag, setToggleDeleteTag] = useState({});
 
   const handleDeleteAndCloseDrawing = async (id) => {
     await deleteOneDrawing(id);
@@ -27,8 +27,6 @@ const Dashboard = () => {
   const handleDeleteTag = async (id) => {
     await deleteOneTag(id);
     setTags(tags.filter((tag) => tag.id !== id));
-    setValidationButtonTag(false);
-    console.log(validationButtonTag);
   };
 
   const handleShow = (e) => {
@@ -37,11 +35,12 @@ const Dashboard = () => {
     setShow(true);
   };
 
-  function toggleValidationButtonTag(e) {
-    setItemIdToDelete(parseInt(e.target.dataset.id, 10));
-    setItemNameToDelete(e.target.dataset.name, 10);
-    setValidationButtonTag(!validationButtonTag);
-  }
+  const toggleConfirmationTag = (id) => {
+    setToggleDeleteTag((prevtoggleDeleteTag) => ({
+      ...prevtoggleDeleteTag,
+      [id]: !prevtoggleDeleteTag[id],
+    }));
+  };
 
   const handleClose = () => setShow(false);
 
@@ -91,12 +90,10 @@ const Dashboard = () => {
         />
       ) : (
         <AdminTagsList
-          setValidationButtonTag={setValidationButtonTag}
-          validationButtonTag={validationButtonTag}
+          toggleDeleteTag={toggleDeleteTag}
+          toggleConfirmationTag={toggleConfirmationTag}
           tags={tags}
-          toggleValidationButtonTag={toggleValidationButtonTag}
-          setItemIdToDelete={setItemIdToDelete}
-          onValidation={() => handleDeleteTag(itemIdToDelete)}
+          handleDeleteTag={handleDeleteTag}
         />
       )}
     </Container>

@@ -1,10 +1,9 @@
 import React, { useState } from 'react';
-import { Form, Row, Col, Button, Alert, Spinner } from 'react-bootstrap';
+import { Form, Button } from 'react-bootstrap';
 import emailjs from 'emailjs-com';
-import MessageSentToast from '../components/toast/MessageSentToast';
 
 export default function ContactUs() {
-  const [messageHasBeenSent, setMessageHasBeenSent] = useState(true);
+  const [messageHasBeenSent, setMessageHasBeenSent] = useState(false);
 
   function sendEmail(e) {
     e.preventDefault();
@@ -23,6 +22,11 @@ export default function ContactUs() {
         (error) => {
           console.log(error.text);
         }
+      )
+      .finally(
+        setTimeout(() => {
+          setMessageHasBeenSent(false);
+        }, 3000)
       );
     e.target.reset();
   }

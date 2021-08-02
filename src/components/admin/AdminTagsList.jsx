@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { Row, Col, Button } from 'react-bootstrap';
 
 const AdminTagsList = ({
-  toggleValidationButtonTag,
-  validationButtonTag,
+  toggleDeleteTag,
+  toggleConfirmationTag,
   tags,
-  onValidation,
+  handleDeleteTag,
 }) => {
   return (
     <>
@@ -30,25 +30,26 @@ const AdminTagsList = ({
                   Editer
                 </Link>
               </Button>
-              {!validationButtonTag ? (
+
+              {toggleDeleteTag[tag.id] ? (
                 <Button
-                  data-id={tag.id}
-                  data-name={tag.title}
-                  onClick={toggleValidationButtonTag}
-                  className='m-1'
-                  size='sm'
-                  variant='danger'
-                >
-                  Supprimer
-                </Button>
-              ) : (
-                <Button
-                  onClick={() => onValidation()}
+                  onClick={() => handleDeleteTag(tag.id)}
                   className='m-1'
                   size='sm'
                   variant='danger'
                 >
                   Confirmer ?
+                </Button>
+              ) : (
+                <Button
+                  data-id={tag.id}
+                  data-name={tag.title}
+                  onClick={() => toggleConfirmationTag(tag.id)}
+                  className='m-1'
+                  size='sm'
+                  variant='danger'
+                >
+                  Supprimer
                 </Button>
               )}
             </Col>
