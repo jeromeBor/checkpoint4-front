@@ -8,7 +8,6 @@ import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 function CreateDrawing() {
   const [tags, setTags] = useState();
-
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
 
   useEffect(() => {

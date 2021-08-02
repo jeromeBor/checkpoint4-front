@@ -5,7 +5,7 @@ import emailjs from 'emailjs-com';
 export default function ContactUs() {
   const [messageHasBeenSent, setMessageHasBeenSent] = useState(false);
 
-  function sendEmail(e) {
+  const handleSubmit = (e) => {
     e.preventDefault();
     emailjs
       .sendForm(
@@ -29,42 +29,27 @@ export default function ContactUs() {
         }, 3000)
       );
     e.target.reset();
-  }
+  };
 
   return (
-    <Form onSubmit={sendEmail} className='p-5 col-12 col-md-6 mx-auto'>
-      {/* {messageHasBeenSent ? (
-        <MessageSentToast
-          messageHasBeenSent={messageHasBeenSent}
-          setMessageHasBeenSent={setMessageHasBeenSent}
-        />
-      ) : null} */}
-      <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
-        <Form.Label>Adresse Mail</Form.Label>
-        <Form.Control
-          type='email'
-          placeholder='email@exemple.com'
-          name='sender_email'
-        />
-      </Form.Group>
+    <Form
+      noValidate
+      onSubmit={handleSubmit}
+      className='p-5 col-12 col-md-6 mx-auto'
+    >
       <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
         <Form.Label>Votre nom</Form.Label>
-        <Form.Control
-          name='sender_name'
-          type='text'
-          placeholder='
-        Jean'
-        />
+        <Form.Control required name='sender_name' type='text' />
+      </Form.Group>
+      <Form.Group className='mb-3' controlId='exampleForm.ControlInput1'>
+        <Form.Label>Adresse Mail</Form.Label>
+        <Form.Control required type='email' name='sender_email' />
       </Form.Group>
       <Form.Group className='mb-3' controlId='exampleForm.ControlTextarea1'>
         <Form.Label>Votre message</Form.Label>
-        <Form.Control
-          placeholder='Vos dessins sont top !'
-          name='sender_message'
-          as='textarea'
-          rows={3}
-        />
+        <Form.Control required name='sender_message' as='textarea' rows={3} />
       </Form.Group>
+
       {messageHasBeenSent ? (
         <Button type='submit' variant='success' className='w-100'>
           Message envoyé !
