@@ -57,7 +57,7 @@ export default function ContactForm() {
         />
       </Form.Group>
       {errors.sender_name && (
-        <Alert variant='danger p-2'> {errors.sender_name.message}</Alert>
+        <Alert variant='danger'> {errors.sender_name.message}</Alert>
       )}
       <Form.Group className='mb-3'>
         <Form.Label>Adresse Mail</Form.Label>
@@ -75,7 +75,7 @@ export default function ContactForm() {
         />
       </Form.Group>
       {errors.sender_email && (
-        <Alert variant='danger p-2'> {errors.sender_email.message}</Alert>
+        <Alert variant='danger'> {errors.sender_email.message}</Alert>
       )}
       <Form.Group className='mb-3'>
         <Form.Label>Votre message</Form.Label>
@@ -93,12 +93,11 @@ export default function ContactForm() {
           })}
           name='sender_message'
           as='textarea'
-          placeholder='Vos dessins sont superbes !'
-          rows={5}
+          rows={3}
         />
       </Form.Group>
       {errors.sender_message && (
-        <Alert variant='danger p-2'> {errors.sender_message.message}</Alert>
+        <Alert variant='danger'> {errors.sender_message.message}</Alert>
       )}
 
       {messageHasBeenSent ? (
