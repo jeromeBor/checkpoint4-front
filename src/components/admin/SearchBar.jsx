@@ -23,23 +23,23 @@ const SearchBar = ({ searchValue, setSearchValue, panel }) => {
           <Form.Control
             name='searchValue'
             onChange={(e) => storeSearchValue(e)}
-            className='form-control-sm'
+            size='sm'
             type='text'
             placeholder='Rechercher par titre'
           />
-          <Button type='reset' onClick={(e) => setSearchValue('')}>
+          <Button size='sm' type='reset' onClick={(e) => setSearchValue('')}>
             X
           </Button>
         </>
       ) : (
         <>
           <Form.Control
-            className='form-control-sm'
+            size='sm'
             type='text'
             placeholder='Disponible pour les dessins seulement'
             readOnly
           />{' '}
-          <Button type='reset' onClick={(e) => setSearchValue('')} disabled>
+          <Button disabled size='sm'>
             X
           </Button>
         </>
