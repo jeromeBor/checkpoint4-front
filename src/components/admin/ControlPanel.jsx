@@ -34,7 +34,9 @@ const ControlPanel = ({
             Afficher les dessins
           </Button>
         )}
+
         <SearchBar
+          panel={panel}
           searchValue={searchValue}
           setSearchValue={setSearchValue}
           // fetchDrawingsByName={fetchDrawingsByName}
