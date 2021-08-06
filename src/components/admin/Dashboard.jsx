@@ -11,12 +11,21 @@ import AdminTagsList from './AdminTagsList';
 
 const Dashboard = () => {
   const [drawings, setDrawings] = useState();
+  const [searchedDrawing, setSearchedDrawing] = useState();
   const [tags, setTags] = useState();
   const [panel, setPanel] = useState(true);
   const [show, setShow] = useState(false);
   const [itemIdToDelete, setItemIdToDelete] = useState();
   const [itemNameToDelete, setItemNameToDelete] = useState();
   const [toggleDeleteTag, setToggleDeleteTag] = useState({});
+
+  const [searchValue, setSearchValue] = useState('');
+
+  const storeSearchValue = (e) => {
+    setSearchValue(e.target.value);
+    // console.log(searchValue);
+    console.log(drawings);
+  };
 
   const handleDeleteAndCloseDrawing = async (id) => {
     await deleteOneDrawing(id);
@@ -80,10 +89,20 @@ const Dashboard = () => {
           </h1>
         </Col>
       </Row>
-      <ControlPanel togglePanel={togglePanel} panel={panel} />
+      <ControlPanel
+        storeSearchValue={storeSearchValue}
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}
+        togglePanel={togglePanel}
+        panel={panel}
+        setSearchedDrawing={setSearchedDrawing}
+        searchedDrawing={searchedDrawing}
+        setDrawings={setDrawings}
+      />
 
       {panel ? (
         <AdminDrawingsList
+          searchValue={searchValue}
           handleShow={handleShow}
           show={show}
           drawings={drawings}

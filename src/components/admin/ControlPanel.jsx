@@ -1,8 +1,15 @@
 import React from 'react';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Row, Col, Button } from 'react-bootstrap';
+import SearchBar from './SearchBar';
 import { Link } from 'react-router-dom';
 
-const ControlPanel = ({ panel, togglePanel }) => {
+const ControlPanel = ({
+  setSearchValue,
+  searchValue,
+  panel,
+  togglePanel,
+  fetchDrawingsByName,
+}) => {
   return (
     <Row className='flex-column flex-md-row'>
       <Col className='d-flex flex-sm-column flex-column align-items-center justify-content-center p-1'>
@@ -27,16 +34,11 @@ const ControlPanel = ({ panel, togglePanel }) => {
             Afficher les dessins
           </Button>
         )}
-        <Form className='d-flex flex-row m-1 w-100'>
-          <Form.Control
-            className='form-control-sm'
-            type='email'
-            placeholder='Rechercher par nom'
-          />
-          <Button size='sm' onClick={togglePanel}>
-            Rechercher
-          </Button>
-        </Form>
+        <SearchBar
+          searchValue={searchValue}
+          setSearchValue={setSearchValue}
+          // fetchDrawingsByName={fetchDrawingsByName}
+        />
       </Col>
     </Row>
   );

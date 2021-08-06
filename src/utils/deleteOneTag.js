@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const deleteOneTag = (id) => {
-  axios.delete(`${process.env.REACT_APP_API_URL}/tags/${id}`);
+  axios.delete(`/tags/${id}`);
 };
 
 export default deleteOneTag;

@@ -53,14 +53,17 @@ export default function ContactForm() {
           })}
           name='sender_name'
           type='text'
-          placeholder='Jean-Eude'
+          placeholder='Jean'
         />
       </Form.Group>
       {errors.sender_name && (
-        <Alert variant='danger p-2'> {errors.sender_name.message}</Alert>
+        <Alert variant='danger p-2 fw-light'>
+          {' '}
+          {errors.sender_name.message}
+        </Alert>
       )}
       <Form.Group className='mb-3'>
-        <Form.Label>Adresse Mail</Form.Label>
+        <Form.Label>Votre adresse mail</Form.Label>
         <Form.Control
           {...register('sender_email', {
             required: 'Merci de spécifier un email',
@@ -71,11 +74,14 @@ export default function ContactForm() {
           })}
           type='text'
           name='sender_email'
-          placeholder='wwww.jean-eude@gmail.com'
+          placeholder='wwww.jean@gmail.com'
         />
       </Form.Group>
       {errors.sender_email && (
-        <Alert variant='danger p-2'> {errors.sender_email.message}</Alert>
+        <Alert variant='danger p-2 fw-light'>
+          {' '}
+          {errors.sender_email.message}
+        </Alert>
       )}
       <Form.Group className='mb-3'>
         <Form.Label>Votre message</Form.Label>
@@ -98,7 +104,10 @@ export default function ContactForm() {
         />
       </Form.Group>
       {errors.sender_message && (
-        <Alert variant='danger p-2'> {errors.sender_message.message}</Alert>
+        <Alert variant='danger p-2 fw-light'>
+          {' '}
+          {errors.sender_message.message}
+        </Alert>
       )}
 
       {messageHasBeenSent ? (
