@@ -14,7 +14,7 @@ const Content = () => {
   const UpdateDrawing = lazy(() => import('./admin/UpdateDrawing'));
   const CreateTag = lazy(() => import('./admin/CreateTag'));
   const UpdateTag = lazy(() => import('./admin/UpdateTag'));
-  const SearchDrawing = lazy(() => import('./admin/SearchDrawing'));
+  const PageNotFound = lazy(() => import('./PageNotFound'));
 
   return (
     <div className='content'>
@@ -34,11 +34,8 @@ const Content = () => {
           />
           <Route exact path='/admin/create-tag' component={CreateTag} />
           <Route exact path='/admin/update-tag/:id' component={UpdateTag} />
-          <Route
-            exact
-            path='/admin/dashboard/:searchValue'
-            component={SearchDrawing}
-          />
+
+          <Route component={PageNotFound} />
         </Switch>
       </Suspense>
     </div>
