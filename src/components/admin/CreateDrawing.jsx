@@ -1,4 +1,6 @@
 import React, { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+
 import { useForm } from 'react-hook-form';
 import axios from 'axios';
 import fetchTags from '../../utils/fetchTags';
@@ -7,6 +9,8 @@ import '../../styles/form.css';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 
 function CreateDrawing() {
+  let history = useHistory();
+
   const [tags, setTags] = useState();
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
 
@@ -23,11 +27,15 @@ function CreateDrawing() {
       .post('http://localhost:4000/drawings', formFields)
       .then(setIsDrawingCreating(true))
       .then((res) => res.data)
-      .finally(
+      .then(
         setTimeout(() => {
           setIsDrawingCreating(false);
-        }, 2000),
-        console.log(formFields)
+        }, 2000)
+      )
+      .finally(
+        setTimeout(() => {
+          history.goBack();
+        }, 3000)
       );
 
   const {
@@ -44,7 +52,6 @@ function CreateDrawing() {
     };
     createDrawing(formFields);
     e.target.reset();
-    console.log('sent');
   };
 
   return (
@@ -125,7 +132,7 @@ function CreateDrawing() {
               variant='primary'
               className='fw-bold btn-default btn-block'
             >
-              Send drawing
+              Créér le dessin
             </Button>
           ) : (
             <Button
@@ -135,7 +142,7 @@ function CreateDrawing() {
               className='text-white btn-default btn-block d-flex justify-content-center align-items-center '
             >
               <Spinner animation='border' size='sm' />
-              <span className='ms-2'> Drawing sending...</span>
+              <span className='ms-2'> Création en cour...</span>
             </Button>
           )}
         </div>

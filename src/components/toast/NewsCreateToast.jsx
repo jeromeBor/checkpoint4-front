@@ -1,6 +1,4 @@
 import { Toast, Col, Row } from 'react-bootstrap';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCheckCircle } from '@fortawesome/free-solid-svg-icons';
 import '../../styles/toasts.css';
 
 export default function NewsCreateToast({
@@ -17,9 +15,7 @@ export default function NewsCreateToast({
           // autohide
         >
           <Toast.Header closeButton={false}>
-            <FontAwesomeIcon icon={faCheckCircle} size='lg' />
             <strong className='me-auto'>Création d'actualité</strong>
-            <FontAwesomeIcon icon={faCheckCircle} size='lg' />
           </Toast.Header>
           <Toast.Body>Actualité créé avec succès !</Toast.Body>
         </Toast>

@@ -11,7 +11,7 @@ const ControlPanel = ({
   fetchDrawingsByName,
 }) => {
   return (
-    <Row className='flex-column flex-md-row'>
+    <Row className='flex-column flex-md-row mb-3'>
       <Col className='d-flex flex-sm-column flex-column align-items-center justify-content-center p-1'>
         <Button size='sm' variant='success' className='m-1  w-100'>
           <Link className='text-white' to='/admin/create-drawing'>

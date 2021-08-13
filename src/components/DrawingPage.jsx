@@ -4,6 +4,7 @@ import 'react-awesome-lightbox/build/style.css';
 import '../styles/drawingpage.css';
 import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
+import { BiChevronLeft } from 'react-icons/bi';
 
 import { Row, Col, Button } from 'react-bootstrap';
 
@@ -49,7 +50,10 @@ const DrawingPage = () => {
           <Col className='fw-light pt-3'>
             <p>{drawingData && drawingData[0].postContent}</p>
             <Link to='/drawings' className='backto d-inline'>
-              <Button size='sm'>Revenir la galerie</Button>{' '}
+              <Button size='sm'>
+                <BiChevronLeft style={{ fontSize: '20px' }} /> Revenir la
+                galerie
+              </Button>{' '}
             </Link>
           </Col>
         </Col>

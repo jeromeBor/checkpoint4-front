@@ -9,11 +9,11 @@ const AdminDrawingsList = ({ searchValue, drawings, handleShow }) => {
     <div>
       <>
         <Row className='bg-secondary d-flex justify-content-center align-items-center'>
-          <Col className='fw-bold col-auto'>ID</Col>
-          <Col className='fw-bold'>Nom</Col>
-          <Col className='fw-bold'>Date de création</Col>
-          <Col className='fw-bold'>Tag</Col>
-          <Col className='fw-bold'>Actions</Col>
+          <Col className='fw-bold col-auto px-2'>ID</Col>
+          <Col className='fw-bold px-2'>Nom</Col>
+          <Col className='fw-bold px-2'>Date de création</Col>
+          <Col className='fw-bold px-2'>Tag</Col>
+          <Col className='fw-bold px-2'>Actions</Col>
         </Row>
 
         {drawings &&
@@ -28,11 +28,13 @@ const AdminDrawingsList = ({ searchValue, drawings, handleShow }) => {
                 key={drawing.id}
                 className='d-flex justify-content-center align-items-center'
               >
-                <Col className='col-auto'>{drawing.id}</Col>{' '}
-                <Col className='col-3'>{drawing.title}</Col>
-                <Col>{formatDateUnix(drawing.dateOfWrite)}</Col>
-                <Col> {drawing.tagsId}</Col>
-                <Col className='d-flex flex-column justify-content-center flex-sm-row'>
+                <Col className='col-1 px-2'>{drawing.id}</Col>{' '}
+                <Col className='col-3 px-2'>{drawing.title}</Col>
+                <Col className='px-2'>
+                  {formatDateUnix(drawing.dateOfWrite)}
+                </Col>
+                <Col className='px-2'> {drawing.tagsId}</Col>
+                <Col className='d-flex flex-column justify-content-center flex-sm-row px-2'>
                   <Button className='m-1 ' size='sm' variant='warning'>
                     <Link
                       to={`/admin/update-drawing/${drawing.id}`}

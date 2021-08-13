@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import emailjs from 'emailjs-com';
 import { useForm } from 'react-hook-form';
-import { Form, Button, Alert } from 'react-bootstrap';
+import { Form, Button, Alert, Card } from 'react-bootstrap';
+import { AiFillWarning, AiOutlineSend } from 'react-icons/ai';
 
 export default function ContactForm() {
   const [messageHasBeenSent, setMessageHasBeenSent] = useState(false);
@@ -44,6 +45,9 @@ export default function ContactForm() {
       onSubmit={handleSubmit(onSubmit)}
       className='p-5 col-12 col-md-6 mx-auto'
     >
+      <Card.Title className='text-center p-2 my-2 bg-transparent text-secondary'>
+        Formulaire de contact
+      </Card.Title>
       <Form.Group className='mb-3'>
         <Form.Label>Votre nom</Form.Label>
         <Form.Control
@@ -58,7 +62,7 @@ export default function ContactForm() {
       </Form.Group>
       {errors.sender_name && (
         <Alert variant='danger p-2 fw-light'>
-          {' '}
+          <AiFillWarning style={{ fontSize: '20px' }} />{' '}
           {errors.sender_name.message}
         </Alert>
       )}
@@ -79,7 +83,7 @@ export default function ContactForm() {
       </Form.Group>
       {errors.sender_email && (
         <Alert variant='danger p-2 fw-light'>
-          {' '}
+          <AiFillWarning style={{ fontSize: '20px' }} />{' '}
           {errors.sender_email.message}
         </Alert>
       )}
@@ -105,18 +109,23 @@ export default function ContactForm() {
       </Form.Group>
       {errors.sender_message && (
         <Alert variant='danger p-2 fw-light'>
-          {' '}
+          <AiFillWarning style={{ fontSize: '20px' }} />{' '}
           {errors.sender_message.message}
         </Alert>
       )}
 
       {messageHasBeenSent ? (
-        <Button type='submit' variant='success' className='w-100'>
+        <Button type='submit' variant='success' size='sm' className='w-100'>
           Message envoyé !
         </Button>
       ) : (
-        <Button type='submit' className='w-100'>
-          Envoyer le message
+        <Button
+          type='submit'
+          variant='secondary'
+          size='sm'
+          className='w-100 text-white'
+        >
+          <AiOutlineSend style={{ fontSize: '20px' }} /> Envoyer le message
         </Button>
       )}
     </Form>

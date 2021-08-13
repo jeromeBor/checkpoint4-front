@@ -1,6 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
-
+import { BsBackspace } from 'react-icons/bs';
 import { Button, Form } from 'react-bootstrap';
 
 const SearchBar = ({ searchValue, setSearchValue, panel }) => {
@@ -27,8 +27,13 @@ const SearchBar = ({ searchValue, setSearchValue, panel }) => {
             type='text'
             placeholder='Rechercher par titre'
           />
-          <Button size='sm' type='reset' onClick={(e) => setSearchValue('')}>
-            X
+          <Button
+            className='p-1 d-flex align-items-center justify-content-center'
+            size='sm'
+            type='reset'
+            onClick={(e) => setSearchValue('')}
+          >
+            <BsBackspace style={{ fontSize: '20px' }} />
           </Button>
         </>
       ) : (
@@ -39,8 +44,12 @@ const SearchBar = ({ searchValue, setSearchValue, panel }) => {
             placeholder='Disponible pour les dessins seulement'
             readOnly
           />{' '}
-          <Button disabled size='sm'>
-            X
+          <Button
+            disabled
+            className='p-1 d-flex align-items-center justify-content-center'
+            size='sm'
+          >
+            <BsBackspace style={{ fontSize: '20px' }} />
           </Button>
         </>
       )}

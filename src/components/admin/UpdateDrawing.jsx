@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
 import { useForm } from 'react-hook-form';
 import fetchTags from '../../utils/fetchTags';
@@ -9,6 +9,8 @@ import updateOneDrawing from '../../utils/updateOneDrawing';
 import '../../styles/form.css';
 
 function UpdateDrawing() {
+  let history = useHistory();
+
   const { id } = useParams();
 
   const [drawingIsUpdating, setDrawingIsUpdating] = useState(false);
@@ -37,7 +39,6 @@ function UpdateDrawing() {
       setValue('imageLink', data[0].imageLink);
       setValue('postContent', data[0].postContent);
       setValue('tagsId', data[0].tagsId);
-      console.log(data[0].tagsId);
     }
     fetchOneDrawingData();
   }, [setValue]);
@@ -56,11 +57,17 @@ function UpdateDrawing() {
     setTimeout(() => {
       setDrawingIsUpdating(false);
     }, 1000);
+    setTimeout(() => {
+      history.goBack();
+    }, 2000);
   };
 
   return (
     <div className='pagecontainer p-4'>
-      <h1>Add new Drawing</h1>
+      <h1 className='page-title fw-bold text-center bg-transparent mx-auto mt-3'>
+        Modification <br />
+        de dessin
+      </h1>{' '}
       <Form
         onSubmit={handleSubmit(onSubmit)}
         encType='multipart/form-data'
@@ -114,7 +121,7 @@ function UpdateDrawing() {
           <Form.Select
             // defaultValue={drawingData && drawingData[0].tagsId}
             name='tagsId'
-            size='sm'
+            size='md'
             {...register('tagsId', {
               required: 'Merci de choisir un tag',
             })}

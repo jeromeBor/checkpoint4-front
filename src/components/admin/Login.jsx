@@ -6,7 +6,7 @@ import { Form, Button, Col, Row } from 'react-bootstrap';
 const Login = () => {
   return (
     <div
-      style={{ padding: '10% 0px 0px 0px' }}
+      style={{ 'min-height': 'inherit' }}
       className='logincontainer w-100 d-flex justify-content-center align-items-sm-center flex-column'
     >
       <Row>
