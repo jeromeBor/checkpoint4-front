@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Jerome's Gallery",
+  "name": "La galerie virtuelle de Jérome",
   "icons": [
     {
       "src": "favicon.ico",
