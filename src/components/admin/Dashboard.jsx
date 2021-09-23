@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from 'react';
-import { Container, Row, Col } from 'react-bootstrap';
-import fetchDrawings from '../../utils/fetchDrawings';
-import fetchTags from '../../utils/fetchTags';
-import deleteOneDrawing from '../../utils/deleteOneDrawing';
-import deleteOneTag from '../../utils/deleteOneTag';
-import ValidationPopup from './ValidationPopup';
-import ControlPanel from './ControlPanel';
-import AdminDrawingsList from './AdminDrawingsList';
-import AdminTagsList from './AdminTagsList';
+import React, { useEffect, useState } from "react";
+import { Container, Row, Col } from "react-bootstrap";
+import fetchDrawings from "../../utils/fetchDrawings";
+import fetchTags from "../../utils/fetchTags";
+import deleteOneDrawing from "../../utils/deleteOneDrawing";
+import deleteOneTag from "../../utils/deleteOneTag";
+import ValidationPopup from "./ValidationPopup";
+import ControlPanel from "./ControlPanel";
+import AdminDrawingsList from "./AdminDrawingsList";
+import AdminTagsList from "./AdminTagsList";
+import DeleteDrawingToast from "../toast/DeleteDrawingToast";
 
 const Dashboard = () => {
   const [drawings, setDrawings] = useState();
@@ -18,8 +19,9 @@ const Dashboard = () => {
   const [itemIdToDelete, setItemIdToDelete] = useState();
   const [itemNameToDelete, setItemNameToDelete] = useState();
   const [toggleDeleteTag, setToggleDeleteTag] = useState({});
+  // const [toggleDeleteToast, setToggleDeleteToast] = useState(false);
 
-  const [searchValue, setSearchValue] = useState('');
+  const [searchValue, setSearchValue] = useState("");
 
   const storeSearchValue = (e) => {
     setSearchValue(e.target.value);
@@ -31,6 +33,7 @@ const Dashboard = () => {
     await deleteOneDrawing(id);
     setDrawings(drawings.filter((drawing) => drawing.id !== id));
     setShow(false);
+    // setToggleDeleteToast(true);
   };
 
   const handleDeleteTag = async (id) => {
@@ -75,6 +78,7 @@ const Dashboard = () => {
 
   return (
     <Container>
+      {/* {toggleDeleteToast ? <DeleteDrawingToast /> : null} */}
       <ValidationPopup
         itemNameToDelete={itemNameToDelete}
         handleClose={handleClose}
@@ -83,8 +87,8 @@ const Dashboard = () => {
         onValidation={() => handleDeleteAndCloseDrawing(itemIdToDelete)}
       />
       <Row>
-        <Col className='mx-auto '>
-          <h1 className='page-title fw-bold text-center bg-transparent mx-auto mt-3'>
+        <Col className="mx-auto ">
+          <h1 className="page-title fw-bold text-center bg-transparent mx-auto mt-3">
             Administration
           </h1>
         </Col>
