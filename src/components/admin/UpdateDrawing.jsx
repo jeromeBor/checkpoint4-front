@@ -5,7 +5,9 @@ import { useForm } from "react-hook-form";
 import fetchTags from "../../utils/fetchTags";
 import fetchOneDrawing from "../../utils/fetchOneDrawing";
 import updateOneDrawing from "../../utils/updateOneDrawing";
-import UpdateDrawingToast from "../toast/UpdateDrawingToast";
+import ValidationToast from "../toast/ValidationToast";
+
+import { AiFillCheckSquare } from "react-icons/ai";
 
 import "../../styles/form.css";
 
@@ -68,8 +70,16 @@ function UpdateDrawing() {
 
   return (
     <div className="pagecontainer p-4">
-      {toggleUpdatedToast ? <UpdateDrawingToast /> : null}
-      <h1 className="page-title fw-bold text-center bg-transparent mx-auto mt-3">
+      {toggleUpdatedToast ? (
+        <ValidationToast
+          title="Modification de dessin"
+          subtitle="Dessin modifié avec succès"
+          textColor="text-success"
+          icon={<AiFillCheckSquare color="green" size="24" />}
+          isRedirected={true}
+        />
+      ) : null}
+      <h1 className="page-title fw-bold text-center bg-transparent mx-auto mt-3 ">
         Modification <br />
         de dessin
       </h1>{" "}

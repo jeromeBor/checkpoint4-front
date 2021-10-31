@@ -4,15 +4,16 @@ import { useHistory } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import fetchTags from "../../utils/fetchTags";
-import CreatedDrawingToast from "../toast/CreatedDrawingToast";
+import ValidationToast from "../toast/ValidationToast";
 
+import { AiFillCheckSquare } from "react-icons/ai";
 import "../../styles/form.css";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 
 function CreateDrawing() {
   let history = useHistory();
   const [tags, setTags] = useState();
-  const [toggleCreateToast, setToggleCreateToast] = useState(false);
+  const [toggleToast, setToggleToast] = useState(false);
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
 
   useEffect(() => {
@@ -31,7 +32,7 @@ function CreateDrawing() {
       .then(
         setTimeout(() => {
           setIsDrawingCreating(false);
-          setToggleCreateToast(true);
+          setToggleToast(true);
         }, 2000)
       )
       .finally(
@@ -58,7 +59,16 @@ function CreateDrawing() {
 
   return (
     <div className="pagecontainer p-4">
-      {toggleCreateToast ? <CreatedDrawingToast /> : null}
+      {toggleToast ? (
+        <ValidationToast
+          setToggleToast={setToggleToast}
+          title="Création d'un dessin"
+          subtitle="Dessin créé avec succès"
+          textColor="text-success"
+          icon={<AiFillCheckSquare color="green" size="24" />}
+          isRedirected={true}
+        />
+      ) : null}
       <h1>Add new Drawing</h1>
       <Form
         onSubmit={handleSubmit(onSubmit)}

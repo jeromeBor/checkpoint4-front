@@ -3,23 +3,24 @@
   scroll-behavior: smooth;
 }
 /* p,
-span {
-  font-family: 'Roboto Slab';
+span,
+div {
+  font-family: "Roboto Slab";
   font-weight: 300;
-  font-size: 0.9rem;
+  /* font-size: 0.9rem; 
 } */
 
 body {
   margin: 0;
-  font-family: 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans',
-    'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Roboto Slab", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 h1,
 h2 {
-  font-family: 'Dancing Script', 'Lato', 'Roboto', 'Oxygen', 'Ubuntu',
-    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  font-family: "Dancing Script", "Lato", "Roboto", "Oxygen", "Ubuntu",
+    "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
 .footer a,
@@ -38,7 +39,7 @@ h2 {
 }
 
 .page-title::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0px;
   top: 50%;
@@ -48,7 +49,7 @@ h2 {
 }
 
 .page-title::after {
-  content: '';
+  content: "";
   position: absolute;
   right: 0px;
   top: 50%;
@@ -94,7 +95,7 @@ a:active {
 
 @media (max-width: 400px) {
   .page-title::before {
-    content: '';
+    content: "";
     position: absolute;
     left: 0px;
     top: 50%;
@@ -104,7 +105,7 @@ a:active {
   }
 
   .page-title::after {
-    content: '';
+    content: "";
     position: absolute;
     right: 0px;
     top: 50%;

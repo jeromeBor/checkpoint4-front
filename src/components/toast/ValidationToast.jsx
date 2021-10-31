@@ -5,7 +5,12 @@ import "../../styles/toasts.css";
 
 export default function NewsCreateToast({
   CreateNewsToast,
-  setCreateNewsToast,
+  setToggleToast,
+  title,
+  subtitle,
+  textColor,
+  icon,
+  isRedirected,
 }) {
   const [timer, setTimer] = useState(3);
 
@@ -15,26 +20,29 @@ export default function NewsCreateToast({
 
   return (
     <Row>
-      <Col className="createnewstoast-container">
+      <Col className="validationtoast-container">
         <Toast
-          onClose={() => setCreateNewsToast(false)}
+          onClose={() => setToggleToast(false)}
           CreateNewsToast={CreateNewsToast}
           delay={3000}
           autohide
         >
           <Toast.Header closeButton={false}>
-            <span className="fw-bold me-auto text-success">
-              Création d'actualité
-            </span>
+            {icon}
+            <strong className={`me-auto ms-2 ${textColor}`}>{title}</strong>
           </Toast.Header>
           <Toast.Body>
-            Actualité créé avec succès !<br />
-            <div>
-              Vous allez être redirigé dans{" "}
-              <span className="fw-bold" id="countdown">
-                {timer} secondes
-              </span>
-            </div>
+            {subtitle}
+            <br />
+
+            {isRedirected ? (
+              <div>
+                Vous allez être redirigé dans{" "}
+                <span className="fw-bold" id="countdown">
+                  {timer} secondes
+                </span>
+              </div>
+            ) : null}
           </Toast.Body>
         </Toast>
       </Col>

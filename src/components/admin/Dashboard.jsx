@@ -8,7 +8,9 @@ import ValidationPopup from "./ValidationPopup";
 import ControlPanel from "./ControlPanel";
 import AdminDrawingsList from "./AdminDrawingsList";
 import AdminTagsList from "./AdminTagsList";
-import DeleteDrawingToast from "../toast/DeleteDrawingToast";
+import ValidationToast from "../toast/ValidationToast";
+
+import { AiFillCheckSquare } from "react-icons/ai";
 
 const Dashboard = () => {
   const [drawings, setDrawings] = useState();
@@ -19,7 +21,7 @@ const Dashboard = () => {
   const [itemIdToDelete, setItemIdToDelete] = useState();
   const [itemNameToDelete, setItemNameToDelete] = useState();
   const [toggleDeleteTag, setToggleDeleteTag] = useState({});
-  // const [toggleDeleteToast, setToggleDeleteToast] = useState(false);
+  const [toggleToast, setToggleToast] = useState(false);
 
   const [searchValue, setSearchValue] = useState("");
 
@@ -33,7 +35,7 @@ const Dashboard = () => {
     await deleteOneDrawing(id);
     setDrawings(drawings.filter((drawing) => drawing.id !== id));
     setShow(false);
-    // setToggleDeleteToast(true);
+    setToggleToast(true);
   };
 
   const handleDeleteTag = async (id) => {
@@ -78,7 +80,16 @@ const Dashboard = () => {
 
   return (
     <Container>
-      {/* {toggleDeleteToast ? <DeleteDrawingToast /> : null} */}
+      {toggleToast ? (
+        <ValidationToast
+          setToggleToast={setToggleToast}
+          title="Suppression de dessin"
+          subtitle="Dessin supprimé avec succès"
+          textColor="text-success"
+          icon={<AiFillCheckSquare color="green" size="24" />}
+          isRedirected={false}
+        />
+      ) : null}
       <ValidationPopup
         itemNameToDelete={itemNameToDelete}
         handleClose={handleClose}

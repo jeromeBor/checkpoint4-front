@@ -12,38 +12,16 @@
   color: var(--primary);
 }
 
-.createnewstoast-container,
-.deletenewstoast-container,
-.deletenewstoast-container,
+.validationtoast-container,
 .messagesenttoast-container {
   display: flex;
   justify-content: center;
-}
-
-/*--- CREATE NEWS TOAST ---*/
-
-.createnewstoast-container .toast-header svg {
-  margin: 0px 1rem 0px 1rem;
-  color: var(--success);
+  z-index: 1000;
 }
 
 /*--- SENT MESSAGE TOAST ---*/
 
 .messagesenttoast-container.toast-header svg {
-  margin: 0px 1rem 0px 1rem;
-  color: var(--success);
-}
-
-/*--- DELETE NEWS TOAST  ---*/
-
-.deletenewstoast-container .toast-header svg {
-  margin: 0px 1rem 0px 1rem;
-  color: red;
-}
-
-/*--- UPDATE NEWS TOAST  ---*/
-
-.updatenewstoast-container .toast-header svg {
   margin: 0px 1rem 0px 1rem;
   color: var(--success);
 }
