@@ -1,14 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Container, Row, Col, Tabs, Tab } from "react-bootstrap";
 import fetchDrawings from "../../utils/fetchDrawings";
 import fetchTags from "../../utils/fetchTags";
 import deleteOneDrawing from "../../utils/deleteOneDrawing";
 import deleteOneTag from "../../utils/deleteOneTag";
 import ValidationPopup from "./ValidationPopup";
 import ControlPanel from "./ControlPanel";
-import AdminDrawingsList from "./AdminDrawingsList";
+import AdminList from "./AdminList";
 import AdminTagsList from "./AdminTagsList";
 import ValidationToast from "../toast/ValidationToast";
+import SearchBar from "./SearchBar";
+import Title from "./../common/Title";
+
 
 import { AiFillCheckSquare } from "react-icons/ai";
 
@@ -24,6 +27,7 @@ const Dashboard = () => {
   const [toggleToast, setToggleToast] = useState(false);
 
   const [searchValue, setSearchValue] = useState("");
+  const [key, setKey] = useState("drawings");
 
   const storeSearchValue = (e) => {
     setSearchValue(e.target.value);
@@ -97,13 +101,7 @@ const Dashboard = () => {
         setShow={setShow}
         onValidation={() => handleDeleteAndCloseDrawing(itemIdToDelete)}
       />
-      <Row>
-        <Col className="mx-auto ">
-          <h1 className="page-title fw-bold text-center bg-transparent mx-auto mt-3">
-            Administration
-          </h1>
-        </Col>
-      </Row>
+      <Title text="Administration" />
       <ControlPanel
         storeSearchValue={storeSearchValue}
         searchValue={searchValue}
@@ -115,21 +113,40 @@ const Dashboard = () => {
         setDrawings={setDrawings}
       />
 
-      {panel ? (
-        <AdminDrawingsList
-          searchValue={searchValue}
-          handleShow={handleShow}
-          show={show}
-          drawings={drawings}
-        />
-      ) : (
-        <AdminTagsList
-          toggleDeleteTag={toggleDeleteTag}
-          toggleConfirmationTag={toggleConfirmationTag}
-          tags={tags}
-          handleDeleteTag={handleDeleteTag}
-        />
-      )}
+      <Tabs
+        id="controlled-tab-example"
+        activeKey={key}
+        onSelect={(k) => setKey(k)}
+        className="mb-3"
+      >
+        <Tab eventKey="drawings" title="Dessins" className="text-black" variant="pills">
+          <SearchBar
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+          <AdminList
+            searchValue={searchValue}
+            handleShow={handleShow}
+            show={show}
+            items={drawings}
+            listHeader={["ID", "Nom", "Date de création", "Tag"]}
+          />
+        </Tab>
+        <Tab eventKey="tags" title="Tags">
+          <SearchBar
+            searchValue={searchValue}
+            setSearchValue={setSearchValue}
+          />
+          <AdminList
+            toggleDeleteTag={toggleDeleteTag}
+            searchValue={searchValue}
+            handleShow={handleShow}
+            show={show}
+            items={tags}
+            listHeader={["ID", "Nom"]}
+          />
+        </Tab>
+      </Tabs>
     </Container>
   );
 };

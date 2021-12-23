@@ -6,6 +6,8 @@ import { Container } from 'react-bootstrap';
 import '../styles/drawinglist.css';
 import DrawingCard from './DrawingCard';
 import FilterButtons from './FilterButtons';
+import Title from "./common/Title";
+
 
 const DrawingsList = () => {
   const [drawings, setDrawings] = useState();
@@ -41,7 +43,7 @@ const DrawingsList = () => {
 
   return (
     <Container fluid className='pagecontainer  my-5'>
-      <h1 className='page-title fw-bold text-center mx-auto'>La galerie</h1>
+      <Title text="La gallerie" />
       <div className='filter-button  d-flex justify-content-center '>
         <FilterButtons tags={tags} filter={filter} showAll={showAll} />
       </div>

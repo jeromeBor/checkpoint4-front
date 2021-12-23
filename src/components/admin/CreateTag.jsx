@@ -4,6 +4,8 @@ import axios from 'axios';
 
 import '../../styles/form.css';
 import { Form, Button, Alert, Spinner } from 'react-bootstrap';
+import Title from "./../common/Title";
+
 
 function CreateDrawing() {
   const [tagIsCreating, setIsTagCreating] = useState(false);
@@ -35,7 +37,7 @@ function CreateDrawing() {
 
   return (
     <div className='pagecontainer p-4'>
-      <h1>Créer un tag</h1>
+      <Title text="Créer un tag" />
       <Form
         onSubmit={handleSubmit(onSubmit)}
         encType='multipart/form-data'

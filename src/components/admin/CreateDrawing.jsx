@@ -1,20 +1,27 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
-
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import fetchTags from "../../utils/fetchTags";
 import ValidationToast from "../toast/ValidationToast";
-
+import Title from "./../common/Title";
+import Draftjs from "./../common/Draftjs";
+import { EditorState } from 'draft-js';
 import { AiFillCheckSquare } from "react-icons/ai";
 import "../../styles/form.css";
+import "../../styles/draftjs.css"
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
+
 
 function CreateDrawing() {
   let history = useHistory();
   const [tags, setTags] = useState();
   const [toggleToast, setToggleToast] = useState(false);
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
+
+  // const [editorState, setEditorState] = useState(
+  //   () => EditorState.createEmpty(),
+  // );
 
   useEffect(() => {
     async function fetchApiTags() {
@@ -44,6 +51,7 @@ function CreateDrawing() {
   const {
     register,
     handleSubmit,
+    control,
     formState: { errors },
   } = useForm();
 
@@ -69,7 +77,7 @@ function CreateDrawing() {
           isRedirected={true}
         />
       ) : null}
-      <h1>Add new Drawing</h1>
+      <Title text="Créer un dessin" />
       <Form
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
@@ -101,8 +109,11 @@ function CreateDrawing() {
         {errors.imageLink && (
           <Alert variant="danger"> {errors.imageLink.message}</Alert>
         )}
+        <Form.Label>Content</Form.Label>
+
+        <Draftjs control={control} register={register} />
         <Form.Group className="mb-3">
-          <Form.Label>Content</Form.Label>
+
           <Form.Control
             {...register("postContent", {
               required: "Merci de rentrer du contenu",
@@ -125,7 +136,7 @@ function CreateDrawing() {
               required: "Merci de choisir un tag",
             })}
           >
-            <option value="default">Choisir un tag</option>
+            <option value="">Choisir un tag</option>
             {tags &&
               tags.map((tag) => (
                 <option key={tag.id} value={tag.id}>
@@ -135,7 +146,7 @@ function CreateDrawing() {
           </Form.Select>
         </Form.Group>
         {errors.tagsId && (
-          <Alert variant="danger"> {errors.postContent.tagsId}</Alert>
+          <Alert variant="danger" > {errors.tagsId.message}</Alert>
         )}
 
         <div class="d-grid gap-2">

@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom';
 
 import fetchDrawings from '../utils/fetchDrawings';
 import { Col, Row, Button } from 'react-bootstrap';
+import Title from "./common/Title";
+
 
 const Home = () => {
   const [drawings, setDrawings] = useState();
@@ -25,12 +27,8 @@ const Home = () => {
           </h1>
         </div>
       </div>
-      {/* <div className='mt-4 bg-transparent text-center text-secondary '>
-        <h1 className='bg-transparent fw-bold mb-0'>Lastest drawing</h1>
-      </div> */}
-      <h1 className='page-title fw-bold text-center bg-transparent mx-auto mt-3'>
-        Dernière oeuvre
-      </h1>
+     
+     <Title text="Ma dernière oeuvre"/>
       <Row className='lastdrawing p-3 mx-auto my-0 mb-sm-5'>
         <Col className='lastdrawing-imgcontainer mx-auto col-12 col-md-6 '>
           <img

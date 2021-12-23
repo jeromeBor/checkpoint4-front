@@ -6,6 +6,7 @@ import fetchTags from "../../utils/fetchTags";
 import fetchOneDrawing from "../../utils/fetchOneDrawing";
 import updateOneDrawing from "../../utils/updateOneDrawing";
 import ValidationToast from "../toast/ValidationToast";
+import Title from "./../common/Title"
 
 import { AiFillCheckSquare } from "react-icons/ai";
 
@@ -79,10 +80,8 @@ function UpdateDrawing() {
           isRedirected={true}
         />
       ) : null}
-      <h1 className="page-title fw-bold text-center bg-transparent mx-auto mt-3 ">
-        Modification <br />
-        de dessin
-      </h1>{" "}
+      <Title text=" Modifier
+        le dessin"/>
       <Form
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
