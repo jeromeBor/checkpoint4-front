@@ -28,25 +28,7 @@ function ConfirmationPopup({
         </Modal.Footer>
       </Modal>
     </>
-    // <Col
-    //   className={`col-6 popup-container flexcenter ${
-    //     popupIsOpen ? 'opened' : 'closed'
-    //   }`}
-    // >
-    //   <Alert
-    //     variant='danger'
-    //     className={`popup ${popupIsOpen ? 'opened2' : 'closed2'}`}
-    //   >
-    //     Voulez-vous vraiment supprimer cette actualité ?
-    //     <br />
-    //     <Button variant='warning' onClick={() => onValidation()}>
-    //       Oui
-    //     </Button>
-    //     <Button variant='warning' onClick={(e) => togglePopup(e)}>
-    //       Non
-    //     </Button>
-    //   </Alert>
-    // </Col>
+
   );
 }
 export default ConfirmationPopup;

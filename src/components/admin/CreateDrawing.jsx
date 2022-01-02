@@ -13,15 +13,17 @@ import "../../styles/draftjs.css"
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 
 
+// const defaultValues = {
+//   DraftJS: EditorState.createEmpty(),
+// };
+
+
 function CreateDrawing() {
   let history = useHistory();
   const [tags, setTags] = useState();
   const [toggleToast, setToggleToast] = useState(false);
   const [drawingIsCreating, setIsDrawingCreating] = useState(false);
-
-  // const [editorState, setEditorState] = useState(
-  //   () => EditorState.createEmpty(),
-  // );
+  const [selectedFile, setSelectedFile] = useState(null);
 
   useEffect(() => {
     async function fetchApiTags() {
@@ -36,6 +38,11 @@ function CreateDrawing() {
       .post("http://localhost:4000/drawings", formFields)
       .then(setIsDrawingCreating(true))
       .then((res) => res.data)
+      .then((createdDrawing) => {
+        const data = new FormData();
+        data.append('file', selectedFile);
+        axios.post(`http://localhost:4000/drawings/${createdDrawing.idDrawing}/upload`, data)
+      })
       .then(
         setTimeout(() => {
           setIsDrawingCreating(false);
@@ -48,12 +55,13 @@ function CreateDrawing() {
         }, 5000)
       );
 
+
   const {
     register,
     handleSubmit,
-    control,
+    // control,
     formState: { errors },
-  } = useForm();
+  } = useForm({});
 
   const onSubmit = async (values, e) => {
     const date = Date.now();
@@ -61,9 +69,14 @@ function CreateDrawing() {
       ...values,
       dateOfWrite: date,
     };
+    formFields.imageLink = selectedFile.name
     createDrawing(formFields);
     e.target.reset();
   };
+
+  const onFileChangeHandler = (event) => {
+    setSelectedFile(event.target.files[0]);
+  }
 
   return (
     <div className="pagecontainer p-4">
@@ -97,21 +110,29 @@ function CreateDrawing() {
         )}
         <Form.Group className="mb-3">
           <Form.Label>Image link</Form.Label>
-          <Form.Control
+          <input
+            // {...register("imageLink", {
+            //   required: "Merci de choisir une image",
+            // })}
+            name="imageLink"
+            type="file"
+            onChange={onFileChangeHandler}
+          />
+          {/* <Form.Control
             {...register("imageLink", {
               required: "Merci de choisir une image",
             })}
             name="imageLink"
             type="text"
-            placeholder="wwww.imageThatIsSTW.png"
-          />
+          /> */}
         </Form.Group>
         {errors.imageLink && (
           <Alert variant="danger"> {errors.imageLink.message}</Alert>
         )}
         <Form.Label>Content</Form.Label>
 
-        <Draftjs control={control} register={register} />
+        {/* <Draftjs register={register} /> */}
+
         <Form.Group className="mb-3">
 
           <Form.Control

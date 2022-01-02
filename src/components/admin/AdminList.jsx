@@ -13,7 +13,8 @@ const AdminList = ({ searchValue, items, handleShow, listHeader }) => {
         <Table striped borderless size="sm">
           <thead >
             <tr >
-              {listHeader && listHeader.map((header) => <th>{header}</th>)}
+              {listHeader && listHeader.map((header) => <th key={header}
+              >{header}</th>)}
             </tr>
           </thead>
           <tbody>
@@ -25,7 +26,9 @@ const AdminList = ({ searchValue, items, handleShow, listHeader }) => {
                     item.tagsId === parseInt(searchValue)
                 )
                 .map((item) => (
-                  <tr>
+                  <tr
+                    key={item.id}
+                  >
                     <td>{item.id ? item.id : null}</td>
                     <td>{item.title ? item.title : null}</td>
                     <td>

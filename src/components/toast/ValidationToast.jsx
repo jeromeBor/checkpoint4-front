@@ -3,8 +3,7 @@ import React, { useState } from "react";
 
 import "../../styles/toasts.css";
 
-export default function NewsCreateToast({
-  CreateNewsToast,
+export default function ValidationToast({
   setToggleToast,
   title,
   subtitle,
@@ -15,6 +14,7 @@ export default function NewsCreateToast({
   const [timer, setTimer] = useState(3);
 
   setInterval(function () {
+
     setTimer(timer - 1);
   }, 1000);
 
@@ -23,7 +23,6 @@ export default function NewsCreateToast({
       <Col className="validationtoast-container">
         <Toast
           onClose={() => setToggleToast(false)}
-          CreateNewsToast={CreateNewsToast}
           delay={3000}
           autohide
         >

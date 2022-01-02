@@ -1,21 +1,19 @@
 import React from 'react';
+import { Controller } from "react-hook-form";
 import { Editor, EditorState, RichUtils, Modifier } from 'draft-js';
-// import {
-//     RichUtils,
-//     KeyBindingUtil,
-//     EditorState,
-//     CompositeDecorator
-// } from "draft-js";
+
 import 'draft-js/dist/Draft.css';
 
 
 
-const Draftjs = ({ control }) => {
+const Draftjs = ({
+    //  control 
+}) => {
+
 
     const [editorState, setEditorState] = React.useState(
         () => EditorState.createEmpty(),
     );
-
 
     const toggleInlineStyle = inlineStyle => {
         setEditorState(RichUtils.toggleInlineStyle(editorState, inlineStyle));
@@ -25,38 +23,6 @@ const Draftjs = ({ control }) => {
     const toggleBlockType = inlineStyle => {
         setEditorState(RichUtils.toggleBlockType(editorState, inlineStyle));
     };
-
-    // const toggleColor = (toggledColor) => {
-    //     const selection = editorState.getSelection();
-    //     // Let's just allow one color at a time. Turn off all active colors.
-    //     const nextContentState = Object.keys(colorStyleMap)
-    //         .reduce((contentState, color) => {
-    //             return Modifier.removeInlineStyle(contentState, selection, color)
-    //         }, editorState.getCurrentContent());
-    //     let nextEditorState = EditorState.push(
-    //         editorState,
-    //         nextContentState,
-    //         'change-inline-style'
-    //     );
-
-    //     const currentStyle = editorState.getCurrentInlineStyle();
-    //     // Unset style override for current color.
-    //     if (selection.isCollapsed()) {
-    //         nextEditorState = currentStyle.reduce((state, color) => {
-    //             return RichUtils.toggleInlineStyle(state, color);
-    //         }, nextEditorState);
-    //     }
-
-    //     // If the color is being toggled on, apply it.
-    //     if (!currentStyle.has(toggledColor)) {
-    //         // debugger;
-    //         nextEditorState = RichUtils.toggleInlineStyle(
-    //             nextEditorState,
-    //             toggledColor
-    //         );
-    //     }
-    //     setEditorState(nextEditorState);
-    // }
 
 
     const inlineStyles = [
@@ -73,26 +39,6 @@ const Draftjs = ({ control }) => {
         { label: "Titre 2", blockType: 'header-two', buttonStyle: "styleButtonLine-H2" },
     ]
 
-    const colors = [
-        { label: 'Blue', style: 'blue' },
-        { label: 'Yellow', style: 'yellow' },
-        { label: 'Noir', style: 'black' },
-        { label: 'Gris', style: 'grey' },
-    ];
-    const colorStyleMap = {
-        blue: {
-            color: 'rgba(127,183,190)',
-        },
-        yellow: {
-            color: 'rgba(218,204,62)',
-        },
-        black: {
-            color: 'rgba(0,0,0,0)',
-        },
-        grey: {
-            color: 'rgba(0, 180, 0, 1.0)',
-        }
-    };
 
     return (
         <div className="editorContainer">
@@ -123,32 +69,23 @@ const Draftjs = ({ control }) => {
             ))
             }
 
-            {/* {colors.map(type => (
-                <button
-                    type="button"
-                    className={editorState.getCurrentInlineStyle().has(type.style) ? 'styleButtonActive' : 'styleButton'}
-                    key={type.label}
-                    onMouseDown={e => {
-                        e.preventDefault();
-                        // toggleColor(type.style);
-                        toggleColor(colorStyleMap[type.style]);
-                    }}
-                >{type.label}</button>
-            ))
-            } */}
+
 
             <div className="editors">
-                {/* <Controller
+                <Controller
                     name="DraftJS"
-                    control={control}
-                    render={({ value, onChange }) => ( */}
-                <Editor
-                    editorState={editorState}
-                    onChange={setEditorState}
-                    placeholder={"Start typing!"}
+                    // control={control}
+                    defaultValue=''
+                    render={({ value, onChange }) => (
+                        <Editor
+                            // error when editorState={value} === undefined !
+                            editorState={editorState}
+                            setEditorState={setEditorState}
+                            placeholder={"Start typing!"}
+                            defaultValue=''
+                        />
+                    )}
                 />
-                {/* )}
-                /> } */}
             </div>
         </div >
     );
