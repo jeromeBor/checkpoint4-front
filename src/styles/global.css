@@ -2,6 +2,7 @@
   box-sizing: border-box;
   scroll-behavior: smooth;
 }
+
 /* p,
 span,
 div {
@@ -17,6 +18,7 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
+
 h1,
 h2 {
   font-family: "Dancing Script", "Lato", "Roboto", "Oxygen", "Ubuntu",
@@ -28,6 +30,7 @@ h2 {
   text-decoration: none !important;
   color: inherit !important;
 }
+
 .footer a:hover {
   color: var(--secondary) !important;
 }

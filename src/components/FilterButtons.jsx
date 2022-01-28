@@ -1,5 +1,7 @@
 import React from 'react';
 import { Button } from 'react-bootstrap';
+import "../styles/form.css";
+
 
 const FilterButtons = ({ tags, filter, showAll }) => {
   return (

@@ -6,9 +6,7 @@ import 'draft-js/dist/Draft.css';
 
 
 
-const Draftjs = ({
-    //  control 
-}) => {
+const Draftjs = ({ props }) => {
 
 
     const [editorState, setEditorState] = React.useState(
@@ -68,23 +66,15 @@ const Draftjs = ({
                 >{type.label}</button>
             ))
             }
-
-
-
             <div className="editors">
-                <Controller
-                    name="DraftJS"
-                    // control={control}
+                <Editor
+                    name={props.name}
+                    editorState={props.value}
+                    onChange={props.onChange}
+                    // onChange={setEditorState}
+                    // editorState={editorState}
+                    placeholder={"Start typing!"}
                     defaultValue=''
-                    render={({ value, onChange }) => (
-                        <Editor
-                            // error when editorState={value} === undefined !
-                            editorState={editorState}
-                            setEditorState={setEditorState}
-                            placeholder={"Start typing!"}
-                            defaultValue=''
-                        />
-                    )}
                 />
             </div>
         </div >

@@ -2,24 +2,11 @@ import React from 'react';
 import '../styles/drawingcard.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
-// import { useState, useEffect } from "react";
-
-// import fetchImages from "../utils/fetchImages";
-
 
 const DrawingCard = ({ filteredDrawings, tags }) => {
 
-  // const [images, setImages] = useState([])
   const url = "/http://localhost:4000"
 
-  // useEffect(() => {
-  //   async function fetchImage() {
-  //     const data = await fetchImages();
-  //     setImages(data);
-  //   }
-  //   console.log(images)
-  //   fetchImage();
-  // }, []);
 
   return (
     <>

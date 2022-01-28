@@ -57,6 +57,23 @@ function UpdateDrawing() {
     fetchApiTags();
   }, []);
 
+
+  // const onSubmit = (values) => {
+  //   setDrawingIsUpdating(true);
+  //   updateOneDrawing(id, values);
+  //   const formFields = {
+  //     ...values,
+  //   };
+  //   updateOneDrawing(formFields)
+  //   setTimeout(() => {
+  //     setDrawingIsUpdating(false);
+  //     setToggleUpdatedToast(true);
+  //   }, 2000);
+  //   setTimeout(() => {
+  //     history.goBack();
+  //   }, 5000);
+  // }
+
   const onSubmit = (data) => {
     setDrawingIsUpdating(true);
     updateOneDrawing(id, data);
@@ -68,6 +85,8 @@ function UpdateDrawing() {
       history.goBack();
     }, 5000);
   };
+
+
 
   return (
     <div className="pagecontainer p-4">
