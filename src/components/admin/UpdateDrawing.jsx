@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
@@ -17,15 +18,16 @@ function UpdateDrawing() {
 
   const { id } = useParams();
 
-  const [drawingIsUpdating, setDrawingIsUpdating] = useState(false);
-  const [toggleUpdatedToast, setToggleUpdatedToast] = useState(false);
+  const [isDrawingUpdating, setIsDrawingUpdating] = useState(false);
+  const [toggleUpdadedToast, setToggleUpdadedToast] = useState(false);
+  const [selectedFile, setSelectedFile] = useState(null);
+  const [oldSelectedFilePath, setOldSelectedFilePath] = useState(null)
 
   const [tags, setTags] = useState();
   const [drawingData, setDrawingData] = useState(null);
 
   const preloadedValues = {
     title: "Chargement...",
-    imageLink: "Chargement...",
     postContent: "Chargement...",
     tagsId: "Chargement...",
   };
@@ -40,9 +42,10 @@ function UpdateDrawing() {
   useEffect(() => {
     async function fetchOneDrawingData() {
       const data = await fetchOneDrawing(id);
+      console.log(data[0].imageLink)
       setDrawingData(data[0]);
+      setOldSelectedFilePath(data[0].imageLink);
       setValue("title", data[0].title);
-      setValue("imageLink", data[0].imageLink);
       setValue("postContent", data[0].postContent);
       setValue("tagsId", data[0].tagsId);
     }
@@ -59,39 +62,70 @@ function UpdateDrawing() {
 
 
   // const onSubmit = (values) => {
-  //   setDrawingIsUpdating(true);
+  //   setIsDrawingUpdating(true);
   //   updateOneDrawing(id, values);
   //   const formFields = {
   //     ...values,
   //   };
   //   updateOneDrawing(formFields)
   //   setTimeout(() => {
-  //     setDrawingIsUpdating(false);
-  //     setToggleUpdatedToast(true);
+  //     setIsDrawingUpdating(false);
+  //     setToggleUpdadedToast(true);
   //   }, 2000);
   //   setTimeout(() => {
   //     history.goBack();
   //   }, 5000);
   // }
 
-  const onSubmit = (data) => {
-    setDrawingIsUpdating(true);
-    updateOneDrawing(id, data);
-    setTimeout(() => {
-      setDrawingIsUpdating(false);
-      setToggleUpdatedToast(true);
-    }, 2000);
-    setTimeout(() => {
-      history.goBack();
-    }, 5000);
+  const updateDrawingImage = (formFields) => {
+    axios
+      .put(`${process.env.REACT_APP_API_URL}/drawings/${id}`, formFields)
+      .then(setIsDrawingUpdating(true))
+      .then(() => {
+        const data = new FormData();
+        if (selectedFile) {
+          data.append('file', selectedFile);
+          axios.post(`${process.env.REACT_APP_API_URL}/drawings/${id}/upload`, data)
+        }
+      }
+      ).then(setTimeout(() => {
+        setIsDrawingUpdating(false);
+        setToggleUpdadedToast(true);
+      }, 1000))
+      .finally(
+        setTimeout(() => {
+          history.goBack();
+        }, 4000)
+      );
+  }
+
+  const onSubmit = (values) => {
+    const formFields = {
+      ...values,
+    };
+    if (selectedFile) {
+      formFields.imageLink = 'upload/' + selectedFile.name
+    } else {
+      formFields.imageLink = oldSelectedFilePath
+    }
+    updateDrawingImage(formFields);
+
+
   };
 
+  const onFileChangeHandler = (event) => {
+    console.log(selectedFile)
+
+    setSelectedFile(event.target.files[0]);
+    console.log(event.target.files[0])
+  }
 
 
   return (
     <div className="pagecontainer p-4">
-      {toggleUpdatedToast ? (
+      {toggleUpdadedToast ? (
         <ValidationToast
+          setToggleToast={toggleUpdadedToast}
           title="Modification de dessin"
           subtitle="Dessin modifié avec succès"
           textColor="text-success"
@@ -121,14 +155,14 @@ function UpdateDrawing() {
           <Alert variant="danger"> {errors.title.message}</Alert>
         )}
         <Form.Group className="mb-3">
-          <Form.Label>Image link</Form.Label>
+          <Form.Label className="mb-0 pb-0">Image link</Form.Label>
+          <Form.Label className="text-muted"> <small>Ancienne image : {oldSelectedFilePath}</small>
+          </Form.Label>
           <Form.Control
-            {...register("imageLink", {
-              required: "Merci de choisir une image",
-            })}
+            {...register("imageLink")}
             name="imageLink"
-            type="text"
-            placeholder="wwww.imageThatIsSTW.png"
+            type="file"
+            onChange={onFileChangeHandler}
           />
         </Form.Group>
         {errors.imageLink && (
@@ -163,7 +197,7 @@ function UpdateDrawing() {
             {tags &&
               tags.map((tag) => (
                 <option
-                  selected={drawingData.tagsId === tag.id}
+                  selected={drawingData && drawingData.tagsId === tag.id}
                   key={tag.id}
                   value={tag.id}
                 >
@@ -176,7 +210,7 @@ function UpdateDrawing() {
           <Alert variant="danger"> {errors.postContent.tagsId}</Alert>
         )}
         <div class="d-grid gap-2">
-          {!drawingIsUpdating ? (
+          {!isDrawingUpdating ? (
             <Button
               type="submit"
               variant="primary"

@@ -73,10 +73,10 @@ function CreateDrawing() {
       .then(setIsDrawingCreating(true))
       .then((res) => res.data)
       .then((createdDrawing) => {
-        // updatedDrawing 
         const data = new FormData();
         data.append('file', selectedFile);
         axios.post(`http://localhost:4000/drawings/${createdDrawing.idDrawing}/upload`, data)
+        debugger
       })
       .then(
         setTimeout(() => {
@@ -90,28 +90,28 @@ function CreateDrawing() {
         }, 4000)
       );
 
-  const Controller = ({ control, register, name, rules, render }) => {
-    const { errors } = useFormState({
-      control,
-      name
-    });
-    const props = register(name, rules);
-    console.log(errors);
-    console.log(editorState.getCurrentContent().getPlainText('\u0001'));
+  // const Controller = ({ control, register, name, rules, render }) => {
+  //   const { errors } = useFormState({
+  //     control,
+  //     name
+  //   });
+  //   const props = register(name, rules);
+  //   console.log(errors);
+  //   console.log(editorState.getCurrentContent().getPlainText('\u0001'));
 
 
-    return render({
-      onChange: (e) =>
-        props.onChange({
-          target: {
-            name,
-            value: editorState
-          }
-        }),
-      onBlur: props.onBlur,
-      name: props.name
-    });
-  };
+  //   return render({
+  //     onChange: (e) =>
+  //       props.onChange({
+  //         target: {
+  //           name,
+  //           value: editorState
+  //         }
+  //       }),
+  //     onBlur: props.onBlur,
+  //     name: props.name
+  //   });
+  // };
 
   const {
     register,
@@ -129,7 +129,6 @@ function CreateDrawing() {
     formFields.imageLink = selectedFile.name
     createDrawing(formFields);
     e.target.reset();
-
   };
 
   const onFileChangeHandler = (event) => {
@@ -176,6 +175,7 @@ function CreateDrawing() {
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         method="post"
+        className="col-12 col-md-6 mx-auto"
       >
         <Form.Group className="mb-3">
           <Form.Label><strong>Titre</strong></Form.Label>
@@ -190,7 +190,7 @@ function CreateDrawing() {
                 message: "Texte trop long"
               },
               pattern: {
-                value: /^[a-z0-9!?:,.-éèôê]+$/i,
+                value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
                 message: "Caractères spéciaux interdit"
               }
             })}
@@ -234,7 +234,7 @@ function CreateDrawing() {
                 message: "Texte trop long"
               },
               pattern: {
-                value: /^[a-z0-9!?:,.-éèôê]+$/i,
+                value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
                 message: "Caractères spéciaux interdit"
               },
             })}

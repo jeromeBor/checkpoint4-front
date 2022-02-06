@@ -117,9 +117,10 @@ const Dashboard = () => {
         id="controlled-tab-example"
         activeKey={key}
         onSelect={(k) => setKey(k)}
-        className="mb-3"
+        className="m-0 p0 bg-light"
+
       >
-        <Tab eventKey="drawings" title="Dessins" className="text-black" variant="pills">
+        <Tab eventKey="drawings" title="Dessins" className="text-black bg-light mb-0 p-3" variant="pills">
           <SearchBar
             searchValue={searchValue}
             setSearchValue={setSearchValue}
@@ -132,7 +133,7 @@ const Dashboard = () => {
             listHeader={["ID", "Nom", "Date de création", "Tag"]}
           />
         </Tab>
-        <Tab eventKey="tags" title="Tags">
+        <Tab eventKey="tags" title="Tags" className="bg-light mb-0 p-3">
           <SearchBar
             searchValue={searchValue}
             setSearchValue={setSearchValue}

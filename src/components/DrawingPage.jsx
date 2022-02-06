@@ -36,7 +36,7 @@ const DrawingPage = () => {
               Cliquez pour agrandir l'image
             </span>
             <img
-              src={drawingData && drawingData[0].imageLink}
+              src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
               alt={drawingData && drawingData[0].title}
             />
           </div>

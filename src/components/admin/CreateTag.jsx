@@ -42,6 +42,8 @@ function CreateDrawing() {
         onSubmit={handleSubmit(onSubmit)}
         encType='multipart/form-data'
         method='post'
+        className="col-12 col-md-6 mx-auto"
+
       >
         <Form.Group className='mb-3'>
           <Form.Label>Title</Form.Label>
