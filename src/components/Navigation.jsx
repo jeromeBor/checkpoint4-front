@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { Navbar, Container, Nav } from 'react-bootstrap';
+
 import { LinkContainer } from 'react-router-bootstrap';
 import { Divide as Hamburger } from 'hamburger-react';
+import UserContext from "./contexts/UserContext"
+
 
 import '../styles/navigation.css';
 
@@ -10,6 +13,9 @@ const Navigation = () => {
   const closeMenu = () => {
     setOpen(false);
   };
+
+  const { user } = useContext(UserContext)
+
 
   return (
     <Navbar bg='primary' variant='dark' expand='sm' collapseOnSelect>
@@ -43,10 +49,14 @@ const Navigation = () => {
                 Contact
               </Nav.Link>
             </LinkContainer>
+            {user ? <div onClick={closeMenu}>
+              <div>Vous êtes connecté en tant qu'admin !</div>
+            </div> : ""}
+
           </Nav>
         </Navbar.Collapse>
       </Container>
-    </Navbar>
+    </Navbar >
   );
 };
 

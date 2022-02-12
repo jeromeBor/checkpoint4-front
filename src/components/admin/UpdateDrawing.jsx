@@ -5,7 +5,7 @@ import { Form, Button, Alert, Spinner } from "react-bootstrap";
 import { useForm } from "react-hook-form";
 import fetchTags from "../../utils/fetchTags";
 import fetchOneDrawing from "../../utils/fetchOneDrawing";
-import updateOneDrawing from "../../utils/updateOneDrawing";
+// import updateOneDrawing from "../../utils/updateOneDrawing";
 import ValidationToast from "../toast/ValidationToast";
 import Title from "./../common/Title"
 
@@ -42,7 +42,6 @@ function UpdateDrawing() {
   useEffect(() => {
     async function fetchOneDrawingData() {
       const data = await fetchOneDrawing(id);
-      console.log(data[0].imageLink)
       setDrawingData(data[0]);
       setOldSelectedFilePath(data[0].imageLink);
       setValue("title", data[0].title);
@@ -61,21 +60,6 @@ function UpdateDrawing() {
   }, []);
 
 
-  // const onSubmit = (values) => {
-  //   setIsDrawingUpdating(true);
-  //   updateOneDrawing(id, values);
-  //   const formFields = {
-  //     ...values,
-  //   };
-  //   updateOneDrawing(formFields)
-  //   setTimeout(() => {
-  //     setIsDrawingUpdating(false);
-  //     setToggleUpdadedToast(true);
-  //   }, 2000);
-  //   setTimeout(() => {
-  //     history.goBack();
-  //   }, 5000);
-  // }
 
   const updateDrawingImage = (formFields) => {
     axios
@@ -109,8 +93,6 @@ function UpdateDrawing() {
       formFields.imageLink = oldSelectedFilePath
     }
     updateDrawingImage(formFields);
-
-
   };
 
   const onFileChangeHandler = (event) => {

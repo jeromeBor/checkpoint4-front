@@ -1,6 +1,6 @@
 import React, { useState, useEffect, } from "react";
 import { useHistory } from "react-router-dom";
-import { useForm, useFormState, useWatch, Controller } from "react-hook-form";
+import { useForm } from "react-hook-form";
 import axios from "axios";
 import fetchTags from "../../utils/fetchTags";
 import ValidationToast from "../toast/ValidationToast";
@@ -116,7 +116,7 @@ function CreateDrawing() {
   const {
     register,
     handleSubmit,
-    control,
+    // control,
     formState: { errors },
   } = useForm({});
 

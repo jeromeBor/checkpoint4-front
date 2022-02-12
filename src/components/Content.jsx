@@ -19,12 +19,13 @@ const Content = () => {
   return (
     <div className='content'>
       <Suspense fallback={<Loader />}>
+
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/drawings' component={DrawingsList} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/drawing/:id' component={DrawingPage} />
-          <Route exact path='/admin' component={Login} />
+          <Route exact path='/admin/login' component={Login} />
           <Route exact path='/admin/dashboard' component={Dashboard} />
           <Route exact path='/admin/create-drawing' component={CreateDrawing} />
           <Route
