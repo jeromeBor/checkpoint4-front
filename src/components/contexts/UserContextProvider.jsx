@@ -4,7 +4,7 @@ import UserContext from "./UserContext"
 const UserContextProvider = ({ children }) => {
 
     const localUser = JSON.parse(localStorage.getItem("access-token")) || null
-    const [user, setUser] = useState(localUser)
+    const [user, setUser] = useState()
     const [isLoggedIn, setIsLoggedIn] = useState(false)
     useEffect(() => {
         if (user) {
@@ -13,7 +13,7 @@ const UserContextProvider = ({ children }) => {
     }, [user])
 
     return (
-        <UserContext.Provider value={{ user, setUser, isLoggedIn, setIsLoggedIn }} >
+        <UserContext.Provider value={{ user, setUser }} >
             {children}
         </UserContext.Provider>
     )

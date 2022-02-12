@@ -1,9 +1,14 @@
-import React, { Suspense, lazy } from 'react';
-import { Switch, Route } from 'react-router-dom';
+import React, { Suspense, lazy, useContext } from 'react';
+import { Switch, Route, Redirect } from 'react-router-dom';
+import UserContext from "./contexts/UserContext"
+
+
 import '../styles/content.css';
 import Loader from '../components/Loader';
 
 const Content = () => {
+  const { user } = useContext(UserContext)
+
   const Home = lazy(() => import('./Home'));
   const DrawingsList = lazy(() => import('./DrawingsList'));
   const Contact = lazy(() => import('./Contact'));
@@ -19,23 +24,23 @@ const Content = () => {
   return (
     <div className='content'>
       <Suspense fallback={<Loader />}>
-
         <Switch>
           <Route exact path='/' component={Home} />
           <Route exact path='/drawings' component={DrawingsList} />
           <Route exact path='/contact' component={Contact} />
           <Route exact path='/drawing/:id' component={DrawingPage} />
           <Route exact path='/admin/login' component={Login} />
-          <Route exact path='/admin/dashboard' component={Dashboard} />
-          <Route exact path='/admin/create-drawing' component={CreateDrawing} />
-          <Route
-            exact
-            path='/admin/update-drawing/:id'
-            component={UpdateDrawing}
-          />
-          <Route exact path='/admin/create-tag' component={CreateTag} />
-          <Route exact path='/admin/update-tag/:id' component={UpdateTag} />
-
+          {user && (<>
+            <Route exact path='/admin/dashboard' component={Dashboard} />
+            <Route exact path='/admin/create-drawing' component={CreateDrawing} />
+            <Route
+              exact
+              path='/admin/update-drawing/:id'
+              component={UpdateDrawing}
+            />
+            <Route exact path='/admin/create-tag' component={CreateTag} />
+            <Route exact path='/admin/update-tag/:id' component={UpdateTag} /></>)}
+          <Redirect to="/" />
           <Route component={PageNotFound} />
         </Switch>
       </Suspense>

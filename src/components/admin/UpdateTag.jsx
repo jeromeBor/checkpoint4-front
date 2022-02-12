@@ -29,7 +29,7 @@ function UpdateDrawing() {
       setValue('title', data[0].title);
     }
     fetchOneTagData();
-  }, [setValue]);
+  }, []);
 
   const onSubmit = (data) => {
     setTagIsUpdating(true);

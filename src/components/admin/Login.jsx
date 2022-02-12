@@ -1,18 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import { useState, useContext } from "react"
 import { useForm } from "react-hook-form";
 import UserContext from '../contexts/UserContext';
 import axios from "axios";
 
 
-import { Form, Button, Col, Row, Alert } from 'react-bootstrap';
+import { Form, Button, Col, Row, Alert, Spinner } from 'react-bootstrap';
 
 const Login = () => {
 
-  const [errors, setError] = useState(true)
-  const [wrongLogin, setWrongLogin] = useState(false)
+  const [wrongCredentials, setWrongCredentials] = useState(false)
+  const [isLogginLoading, setIsLogginLoading] = useState(false)
   const { setUser, user } = useContext(UserContext)
+
+  let history = useHistory();
 
   const { register,
     handleSubmit,
@@ -20,19 +22,21 @@ const Login = () => {
   } = useForm()
 
   const onSubmit = (values) => {
+
     axios.post(`${process.env.REACT_APP_API_URL}/admin/login`, values)
+      .then(setIsLogginLoading(true))
       .then((res) => res.data)
       .then((res) => {
-        console.log(res)
         if (res) {
-          setError(false)
+          setWrongCredentials(false)
           localStorage.setItem('gallery-access-token', JSON.stringify(res))
           setUser(JSON.parse(localStorage.getItem('gallery-access-token')))
+          history.push('/admin/dashboard')
         } else {
-          setError(true)
+          setWrongCredentials(true)
         }
       }).catch((err) => {
-        if (err) { setWrongLogin(true) }
+        if (err) { setWrongCredentials(true) }
       })
   }
 
@@ -53,14 +57,6 @@ const Login = () => {
                 placeholder='Votre mail'
                 {...register("mail", {
                   required: "Merci de spécifier un mail",
-                  // maxLength: {
-                  //   value: 25,
-                  //   message: "Texte trop long"
-                  // },
-                  // pattern: {
-                  //   value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
-                  //   message: "Caractères spéciaux interdit"
-                  // }
                 })} />
             </Form.Group>
             <Form.Group className='mb-3' controlId='formBasicPassword'>
@@ -70,22 +66,17 @@ const Login = () => {
               <Form.Control type='password' placeholder='Password'
                 {...register("password", {
                   required: "Merci de spécifier un mot de passe",
-                  // maxLength: {
-                  //   value: 25,
-                  //   message: "Texte trop long"
-                  // },
-                  // pattern: {
-                  //   value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
-                  //   message: "Caractères spéciaux interdit"
-                  // }
+
                 })} />
             </Form.Group>
-            {wrongLogin && (<Alert variant="danger"> Mot de passe et/ou identifiant invalide</Alert>)}
-
-
-            <Button variant='primary' type='submit' className='w-100'>
+            {wrongCredentials && (<Alert variant="danger"> Mot de passe et/ou identifiant invalide</Alert>)}
+            {isLogginLoading ? <Button variant='primary' disabled type='submit' className='w-100 text-white btn-default btn-block d-flex justify-content-center align-items-center'>
+              <Spinner animation="border" size="sm" />
+              <span className="ms-2"> Connection en cour...</span>
+            </Button> : <Button variant='primary' type='submit' className='w-100'>
               Se connecter
-            </Button>
+            </Button>}
+
           </Form>
         </Col>
       </Row>
