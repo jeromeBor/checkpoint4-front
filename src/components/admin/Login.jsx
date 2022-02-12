@@ -72,7 +72,7 @@ const Login = () => {
             {wrongCredentials && (<Alert variant="danger"> Mot de passe et/ou identifiant invalide</Alert>)}
             {isLogginLoading ? <Button variant='primary' disabled type='submit' className='w-100 text-white btn-default btn-block d-flex justify-content-center align-items-center'>
               <Spinner animation="border" size="sm" />
-              <span className="ms-2"> Connection en cour...</span>
+              <span className="ms-2"> Connection en cours...</span>
             </Button> : <Button variant='primary' type='submit' className='w-100'>
               Se connecter
             </Button>}

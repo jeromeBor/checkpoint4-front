@@ -76,7 +76,6 @@ function CreateDrawing() {
         const data = new FormData();
         data.append('file', selectedFile);
         axios.post(`http://localhost:4000/drawings/${createdDrawing.idDrawing}/upload`, data)
-        debugger
       })
       .then(
         setTimeout(() => {
@@ -190,7 +189,7 @@ function CreateDrawing() {
                 message: "Texte trop long"
               },
               pattern: {
-                value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
+                value: /^[a-z0-9 !?:, .-éèôêà'"]+$/i,
                 message: "Caractères spéciaux interdit"
               }
             })}
@@ -230,11 +229,11 @@ function CreateDrawing() {
             {...register("postContent", {
               required: "Merci de rentrer du contenu",
               maxLength: {
-                value: 250,
+                value: 350,
                 message: "Texte trop long"
               },
               pattern: {
-                value: /^[a-z0-9!?:,.-éèôêà'"]+$/i,
+                value: /^[a-z0-9!?: ,.-éèôêà'"]+$/i,
                 message: "Caractères spéciaux interdit"
               },
             })}
@@ -286,7 +285,7 @@ function CreateDrawing() {
               className="text-white btn-default btn-block d-flex justify-content-center align-items-center "
             >
               <Spinner animation="border" size="sm" />
-              <span className="ms-2"> Création en cour...</span>
+              <span className="ms-2"> Création en cours...</span>
             </Button>
           )}
         </div>

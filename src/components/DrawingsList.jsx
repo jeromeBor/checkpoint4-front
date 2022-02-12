@@ -8,6 +8,10 @@ import DrawingCard from './DrawingCard';
 import FilterButtons from './FilterButtons';
 import Title from "./common/Title";
 
+import { Spinner } from 'react-bootstrap';
+import Loader from '../components/Loader';
+
+
 
 const DrawingsList = () => {
   const [drawings, setDrawings] = useState();
@@ -47,10 +51,16 @@ const DrawingsList = () => {
       <div className='filter-button  d-flex justify-content-center '>
         <FilterButtons tags={tags} filter={filter} showAll={showAll} />
       </div>
-      <div className='drawingcard-wrapper'>
-        <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
-      </div>
+
+      {drawings && drawings.length ?
+        <div className='drawingcard-wrapper'>
+          <DrawingCard filteredDrawings={filteredDrawings} tags={tags} />
+        </div>
+        :
+        <Loader />
+      }
     </Container>
+
   );
 };
 

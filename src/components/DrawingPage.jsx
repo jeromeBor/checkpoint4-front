@@ -60,7 +60,7 @@ const DrawingPage = () => {
 
         {isLightboxOn ? (
           <Lightbox
-            image={drawingData[0].imageLink}
+            image={`${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
             title={drawingData[0].title}
             onClose={toggleLightbox}
           ></Lightbox>

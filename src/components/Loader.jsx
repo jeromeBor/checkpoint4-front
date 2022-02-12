@@ -1,11 +1,10 @@
 import React from 'react';
-import { BlockLoading } from 'react-loadingg';
+import ReactLoading from 'react-loading';
 
-const Loader = () => {
+const Loader = ({ }) => {
   return (
-    <div className='m-auto'>
-      <BlockLoading speed='3' size='custom' color='#dacc3e' />
-    </div>
+    <div className='d-flex justify-content-center align-self-stretch'>
+      <ReactLoading type="cubes" color="#dacc3e" height={'20%'} width={'20%'} />    </div>
   );
 };
 
