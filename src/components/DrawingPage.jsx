@@ -6,7 +6,9 @@ import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
 import { BiChevronLeft } from 'react-icons/bi';
 
-import { Row, Col, Button } from 'react-bootstrap';
+import LazyImage from './LazyLoad/LazyLoad';
+
+import { Row, Col, Button, Card } from 'react-bootstrap';
 
 const DrawingPage = () => {
   const { id } = useParams();
@@ -35,10 +37,15 @@ const DrawingPage = () => {
             <span className='lightbox-hover-tooltip m-0 p-2 '>
               Cliquez pour agrandir l'image
             </span>
-            <img
+            <LazyImage
               src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
               alt={drawingData && drawingData[0].title}
             />
+            {/* <img
+                src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
+                alt={drawingData && drawingData[0].title}
+              /> */}
+
           </div>
         </Col>
         <Col className='drawingpage-textcontainer'>
@@ -48,7 +55,7 @@ const DrawingPage = () => {
             </h1>
           </Col>
           <Col className='fw-light pt-3'>
-            <p>{drawingData && drawingData[0].postContent}</p>
+            <Card.Text class="form">{drawingData && drawingData[0].postContent}</Card.Text>
             <Link to='/drawings' className='backto d-inline'>
               <Button size='sm'>
                 <BiChevronLeft style={{ fontSize: '20px' }} /> Revenir la

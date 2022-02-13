@@ -39,7 +39,7 @@ const Footer = () => {
             </li>
             <li class='fw-light'>
               <a
-                href='https://github.com/jeromeBor?tab=repositories'
+                href='https://github.com/jeromeBor'
                 target='_blank'
                 rel='noreferrer'
               >
@@ -57,7 +57,7 @@ const Footer = () => {
             </li>
             <li class='fw-light'>
               <a
-                href='mailto:jerome.borga@gmail.com'
+                href='https://www.linkedin.com/in/j%C3%A9rome-borga-7a4973133/'
                 target='_blank'
                 rel='noreferrer'
               >

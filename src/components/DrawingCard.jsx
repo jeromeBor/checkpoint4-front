@@ -2,11 +2,9 @@ import React from 'react';
 import '../styles/drawingcard.css';
 import { Link } from 'react-router-dom';
 import { Card } from 'react-bootstrap';
+import LazyImage from './LazyLoad/LazyLoad';
 
 const DrawingCard = ({ filteredDrawings, tags }) => {
-
-  const url = "/http://localhost:4000"
-
 
   return (
     <>
@@ -24,8 +22,10 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
                 </div>
                 <div className='cardimage-overlay d-flex align-items-center justify-content-center'></div>
                 <div className='cardimage-container'>
+                  {/* <LazyImage
+                    src={drawing.imageLink}
+                  /> */}
                   <Card.Img variant='top' src={drawing.imageLink} />
-
                 </div>
               </Link>
             </Card>

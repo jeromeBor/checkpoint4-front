@@ -34,9 +34,13 @@ const Login = () => {
           history.push('/admin/dashboard')
         } else {
           setWrongCredentials(true)
+          setIsLogginLoading(false)
         }
       }).catch((err) => {
-        if (err) { setWrongCredentials(true) }
+        if (err) {
+          setWrongCredentials(true)
+          setIsLogginLoading(false)
+        }
       })
   }
 

@@ -174,7 +174,7 @@ function CreateDrawing() {
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         method="post"
-        className="col-12 col-md-6 mx-auto"
+        className="col-12 col-md-6 mx-auto form"
       >
         <Form.Group className="mb-3">
           <Form.Label><strong>Titre</strong></Form.Label>

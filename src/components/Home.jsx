@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import fetchDrawings from '../utils/fetchDrawings';
 import { Col, Row, Button } from 'react-bootstrap';
 import Title from "./common/Title";
+import LazyLoad from 'react-lazyload';
 
 
 const Home = () => {
@@ -27,10 +28,11 @@ const Home = () => {
           </h1>
         </div>
       </div>
-     
-     <Title text="Ma dernière oeuvre"/>
+
+      <Title text="Ma dernière oeuvre" />
       <Row className='lastdrawing p-3 mx-auto my-0 mb-sm-5'>
         <Col className='lastdrawing-imgcontainer mx-auto col-12 col-md-6 '>
+
           <img
             src={drawings && drawings[drawings.length - 1].imageLink}
             alt={drawings && drawings[drawings.length - 1].title}

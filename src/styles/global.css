@@ -116,4 +116,10 @@ a:active {
     height: 5px;
     background-color: var(--secondary);
   }
+
+  .form {
+    white-space: pre !important;
+    /* white-space: pre-wrap !important; */
+    word-wrap: break-word !important;
+  }
 }

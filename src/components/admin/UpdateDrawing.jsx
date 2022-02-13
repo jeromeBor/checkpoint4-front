@@ -121,6 +121,7 @@ function UpdateDrawing() {
         onSubmit={handleSubmit(onSubmit)}
         encType="multipart/form-data"
         method="post"
+        class="form"
       >
         <Form.Group className="mb-3">
           <Form.Label>Title</Form.Label>
