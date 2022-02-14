@@ -8,7 +8,6 @@ import DrawingCard from './DrawingCard';
 import FilterButtons from './FilterButtons';
 import Title from "./common/Title";
 
-import { Spinner } from 'react-bootstrap';
 import Loader from '../components/Loader';
 
 

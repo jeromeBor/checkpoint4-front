@@ -6,7 +6,7 @@ import { useParams, Link } from 'react-router-dom';
 import fetchOneDrawing from '../utils/fetchOneDrawing';
 import { BiChevronLeft } from 'react-icons/bi';
 
-import LazyImage from './LazyLoad/LazyLoad';
+import LazyImagePage from './LazyLoad/LazyLoad2';
 
 import { Row, Col, Button, Card } from 'react-bootstrap';
 
@@ -37,9 +37,10 @@ const DrawingPage = () => {
             <span className='lightbox-hover-tooltip m-0 p-2 '>
               Cliquez pour agrandir l'image
             </span>
-            <LazyImage
+            <LazyImagePage
               src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
               alt={drawingData && drawingData[0].title}
+
             />
             {/* <img
               src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}

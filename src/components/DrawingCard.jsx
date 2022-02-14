@@ -22,10 +22,10 @@ const DrawingCard = ({ filteredDrawings, tags }) => {
                 </div>
                 <div className='cardimage-overlay d-flex align-items-center justify-content-center'></div>
                 <div className='cardimage-container'>
-                  {/* <LazyImage
+                  <LazyImage
                     src={drawing.imageLink}
-                  /> */}
-                  <Card.Img variant='top' src={drawing.imageLink} />
+                  />
+                  {/* <Card.Img variant='top' src={drawing.imageLink} /> */}
                 </div>
               </Link>
             </Card>

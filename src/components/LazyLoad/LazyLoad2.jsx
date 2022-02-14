@@ -7,11 +7,8 @@ import { Spinner } from 'react-bootstrap';
 
 
 const ImageWrapper = styled.div`
-  position: relative;
-//   width: 100%;
-//   height: 50vw;
-
-height: 250px;
+position: relative;
+min-height:100%;
 display: flex;
 justify-content: center;
 align-items: center;
@@ -33,14 +30,13 @@ const Placeholder = styled.div`
   `;
 
 const StyledImage = styled.img`
-overflow:hidden;
 height: 100%;
 width: auto;
 transition-duration: 0.5s;
 `;
 
 
-const LazyImage = ({ src, alt }) => {
+const LazyImagePage = ({ src, alt }) => {
     const refPlaceholder = React.useRef();
 
     const removePlaceholder = () => {
@@ -54,8 +50,8 @@ const LazyImage = ({ src, alt }) => {
             </Placeholder>
             <LazyLoad
                 style={{
-                    "width": "auto",
-                    "height": "100%"
+                    "width": "100%",
+                    "height": "auto%"
                 }}
             >
                 <StyledImage
@@ -68,9 +64,9 @@ const LazyImage = ({ src, alt }) => {
     );
 };
 
-LazyImage.propTypes = {
+LazyImagePage.propTypes = {
     src: PropTypes.string.isRequired,
     alt: PropTypes.string.isRequired
 };
 
-export default LazyImage;
+export default LazyImagePage;
