@@ -42,9 +42,9 @@ const DrawingPage = () => {
               alt={drawingData && drawingData[0].title}
             />
             {/* <img
-                src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
-                alt={drawingData && drawingData[0].title}
-              /> */}
+              src={drawingData && `${process.env.REACT_APP_API_URL}/${drawingData[0].imageLink}`}
+              alt={drawingData && drawingData[0].title}
+            /> */}
 
           </div>
         </Col>

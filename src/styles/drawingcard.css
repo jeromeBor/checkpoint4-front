@@ -26,6 +26,7 @@
 .badge {
   font-weight: 500 !important;
 }
+
 .card-label {
   background-color: var(--secondary);
   padding: 8px;
@@ -65,10 +66,10 @@
   bottom: 5px;
 }
 
-.drawing-card a:hover > .cardimage-overlay-text {
+.drawing-card a:hover>.cardimage-overlay-text {
   opacity: 1;
 }
 
-.drawing-card a:hover > .cardimage-overlay {
+.drawing-card a:hover>.cardimage-overlay {
   opacity: 0.7;
 }

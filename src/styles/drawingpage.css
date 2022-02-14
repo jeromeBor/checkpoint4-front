@@ -31,6 +31,7 @@
 }
 
 .lightbox-hover {
+  z-index: 1000;
   position: absolute;
   opacity: 0;
   width: 100%;
@@ -40,6 +41,7 @@
 }
 
 .lightbox-hover-tooltip {
+  z-index: 1001;
   position: absolute;
   bottom: 45%;
   width: 100%;
@@ -48,10 +50,10 @@
   transition: all 0.3s ease;
 }
 
-.imagecontainer:hover > .lightbox-hover {
+.imagecontainer:hover>.lightbox-hover {
   opacity: 1;
 }
 
-.imagecontainer:hover > .lightbox-hover-tooltip {
+.imagecontainer:hover>.lightbox-hover-tooltip {
   opacity: 1;
 }

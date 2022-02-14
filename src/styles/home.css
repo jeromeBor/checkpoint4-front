@@ -55,9 +55,9 @@
   flex-direction: row;
 }
 
-.lastdrawing img {
+/* .lastdrawing img {
   max-height: 400px;
-}
+} */
 
 .welcome h1 {
   font-size: 6vw;
@@ -66,10 +66,14 @@
 
 .typewriter h1 {
   max-width: max-content !important;
-  overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: 0.1em solid #7fb7be; /* The typwriter cursor */
-  white-space: nowrap; /* Keeps the content on a single line */
-  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  overflow: hidden;
+  /* Ensures the content is not revealed until the animation */
+  border-right: 0.1em solid #7fb7be;
+  /* The typwriter cursor */
+  white-space: nowrap;
+  /* Keeps the content on a single line */
+  margin: 0 auto;
+  /* Gives that scrolling effect as the typing happens */
   letter-spacing: 0em;
   animation: 3.5s typing 1s steps(25, end) both, blink-caret 1s step-end 6 both;
 }
@@ -112,6 +116,7 @@
   from {
     width: 0%;
   }
+
   to {
     width: 100%;
   }
@@ -119,10 +124,12 @@
 
 /* The typewriter cursor effect */
 @keyframes blink-caret {
+
   from,
   to {
     border-color: transparent;
   }
+
   50% {
     border-color: #7fb7be;
   }

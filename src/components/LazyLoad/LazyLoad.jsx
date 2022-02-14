@@ -3,10 +3,17 @@ import styled, { keyframes } from "styled-components";
 import PropTypes from "prop-types";
 import LazyLoad from "react-lazyload";
 
+
 const ImageWrapper = styled.div`
   position: relative;
-  width: 100%;
-  height: 50vw;
+//   width: 100%;
+//   height: 50vw;
+
+height: 250px;
+display: flex;
+justify-content: center;
+align-items: center;
+overflow: hidden;
 `;
 
 
@@ -21,12 +28,16 @@ const Placeholder = styled.div`
   `;
 
 const StyledImage = styled.img`
-  position: absolute;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
+// //   position: absolute;
+//   left: 0;
+//   width: 100%;
+//   height: 100%;
+//   object-fit: cover;
+height: 100%;
+width: auto;
+transition-duration: 0.5s;
 `;
+
 
 const LazyImage = ({ src, alt }) => {
     const refPlaceholder = React.useRef();
@@ -38,7 +49,12 @@ const LazyImage = ({ src, alt }) => {
     return (
         <ImageWrapper>
             <Placeholder ref={refPlaceholder} />
-            <LazyLoad>
+            <LazyLoad
+                style={{
+                    "width": "auto",
+                    "height": "100%"
+                }}
+            >
                 <StyledImage
                     onLoad={removePlaceholder}
                     onError={removePlaceholder}

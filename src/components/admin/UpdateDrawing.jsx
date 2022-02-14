@@ -19,9 +19,9 @@ function UpdateDrawing() {
   const { id } = useParams();
 
   const [isDrawingUpdating, setIsDrawingUpdating] = useState(false);
-  const [toggleUpdadedToast, setToggleUpdadedToast] = useState(false);
   const [selectedFile, setSelectedFile] = useState(null);
   const [oldSelectedFilePath, setOldSelectedFilePath] = useState(null)
+  const [toggleToast, setToggleToast] = useState(false);
 
   const [tags, setTags] = useState();
   const [drawingData, setDrawingData] = useState(null);
@@ -64,7 +64,7 @@ function UpdateDrawing() {
   const updateDrawingImage = (formFields) => {
     axios
       .put(`${process.env.REACT_APP_API_URL}/drawings/${id}`, formFields)
-      .then(setIsDrawingUpdating(true))
+      .then(setToggleToast(true))
       .then(() => {
         const data = new FormData();
         if (selectedFile) {
@@ -74,7 +74,7 @@ function UpdateDrawing() {
       }
       ).then(setTimeout(() => {
         setIsDrawingUpdating(false);
-        setToggleUpdadedToast(true);
+        setToggleToast(true);
       }, 1000))
       .finally(
         setTimeout(() => {
@@ -105,9 +105,9 @@ function UpdateDrawing() {
 
   return (
     <div className="pagecontainer p-4">
-      {toggleUpdadedToast ? (
+      {toggleToast ? (
         <ValidationToast
-          setToggleToast={toggleUpdadedToast}
+          setToggleToast={setToggleToast}
           title="Modification de dessin"
           subtitle="Dessin modifié avec succès"
           textColor="text-success"
